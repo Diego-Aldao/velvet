@@ -142,3 +142,131 @@ img {
     width: 60px !important;
   }
 }
+/*ESTILOS DROPDOWN NAVEGACION DESKTOP*/
+
+/*listados sin titulos*/
+.noTitle {
+  span:first-child {
+    @apply hidden;
+  }
+  ul {
+    @apply mt-0;
+  }
+}
+/*listados sin imagenes*/
+.li-itemListado div,
+.li-textList div {
+  display: none;
+}
+
+/*imagenes Circulares grandes*/
+.gridCircleImageLarge {
+  @apply grid grid-cols-2 gap-8 w-fit;
+}
+
+.li-gridCircleImageLarge {
+  @apply flex flex-col gap-2 items-center;
+}
+
+.li-gridCircleImageLarge {
+  @apply max-w-[80px] xl:max-w-[96px];
+  div {
+    @apply w-20 h-20 overflow-hidden rounded-full border-4 border-secondary xl:w-24 xl:h-24;
+  }
+  span {
+    @apply text-center;
+  }
+}
+
+/*imagenes Circulares pequeñas*/
+.li-circleImageListLarge {
+  @apply flex items-center gap-2 py-2 border-b border-secondary/50 last:border-transparent;
+  div {
+    @apply w-10 h-10 rounded-full overflow-hidden border-2 border-secondary xl:w-12 xl:h-12;
+  }
+}
+
+/*imagenes rectangulares horizontales*/
+.halfMarketingImage {
+  @apply w-full flex flex-col gap-8;
+}
+
+.li-halfMarketingImage,
+.li-fullMarketingImage {
+  span {
+    @apply absolute bottom-4 left-0 w-full text-center uppercase px-4 font-nunito-sans font-bold text-sm xl:text-base;
+  }
+}
+
+.li-halfMarketingImage {
+  @apply relative max-w-[300px];
+  div {
+    @apply w-full h-28 xl:h-40;
+  }
+}
+
+/*imagenes rectangulares horizontales dos*/
+.li-thirdMarketingImage {
+  @apply relative flex items-center;
+  div {
+    @apply w-full;
+  }
+  span {
+    @apply absolute left-0 uppercase px-4 font-nunito-sans font-bold text-sm xl:text-base;
+  }
+}
+
+/*imagenes rectangulares verticales*/
+.li-fullMarketingImage {
+  div {
+    @apply w-full;
+  }
+}
+
+.li-halfMarketingImage,
+.li-fullMarketingImage,
+.li-thirdMarketingImage,
+.li-imageCardsWithDescriptionLarge {
+  div {
+    @apply rounded-md overflow-hidden border-4 border-secondary;
+  }
+}
+
+/*imagenes rectangulares con descripcion*/
+.li-imageCardsWithDescriptionLarge {
+  @apply w-full relative;
+  div {
+    @apply rounded-md overflow-hidden w-full;
+  }
+  span:first-of-type {
+    @apply absolute left-0 bottom-0 text-center w-full uppercase px-4 font-nunito-sans font-bold text-sm xl:text-base;
+  }
+}
+
+/*Images con after dark and light*/
+.halfMarketingImage .dark,
+.fullMarketingImage .dark,
+.halfMarketingImage .light,
+.fullMarketingImage .light,
+.imageCardsWithDescriptionLarge .light,
+.imageCardsWithDescriptionLarge .dark {
+  @apply relative after:absolute after:inset-0 after:bg-gradient-to-t  after:to-55% overflow-hidden rounded-md after:to-transparent;
+  span:first-of-type {
+    @apply z-[2];
+  }
+}
+.halfMarketingImage .dark,
+.fullMarketingImage .dark,
+.thirdMarketingImage .dark,
+.imageCardsWithDescriptionLarge .dark {
+  @apply after:from-main-white;
+  span:first-of-type {
+    @apply text-main-black;
+  }
+}
+.halfMarketingImage .light,
+.fullMarketingImage .light,
+.thirdMarketingImage .light,
+.imageCardsWithDescriptionLarge .light {
+  @apply after:from-main-black;
+}
