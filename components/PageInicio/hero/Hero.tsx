@@ -2,12 +2,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import ImagenTrajes from "@/assets/HeroMainPage/HeroTrajes.jpg";
-import ImagenBikini from "@/assets/HeroMainPage/HeroBikini.jpg";
-import imagenPrincipalDeporte from "@/assets/HeroMainPage/heroDeporte/HeroDeporteMain.jpg";
-import imagenDeporteGimnasio from "@/assets/HeroMainPage/heroDeporte/HeroDeporteGimnasio.jpg";
-import imagenDeporteYoga from "@/assets/HeroMainPage/heroDeporte/HeroDeporteYoga.jpg";
-import imagenDeporteRunning from "@/assets/HeroMainPage/heroDeporte/HeroDeporteRunning.jpg";
+import ImagenTrajes from "@/assets/HeroMainPage/HeroTrajes.webp";
+import ImagenBikini from "@/assets/HeroMainPage/HeroBikini.webp";
+import imagenPrincipalDeporte from "@/assets/HeroMainPage/heroDeporte/HeroDeporteMain.webp";
+import imagenDeporteGimnasio from "@/assets/HeroMainPage/heroDeporte/HeroDeporteGimnasio.webp";
+import imagenDeporteYoga from "@/assets/HeroMainPage/heroDeporte/HeroDeporteYoga.webp";
+import imagenDeporteRunning from "@/assets/HeroMainPage/heroDeporte/HeroDeporteRunning.webp";
 import { FullImageSlide, GridSlide, VideoSlide } from "./Slide";
 import ContenidoFullSlide from "./ContenidoFullSlide";
 import {
@@ -40,8 +40,8 @@ export default function Hero() {
       >
         <SwiperSlide>
           <VideoSlide
-            urlVideoDesktop="/5822795-hd_1280_720_50fps.mp4"
-            urlVideoMobile="/5822795-sd_960_540_25fps.mp4"
+            urlVideoDesktop="/heroVideoHD.mp4"
+            urlVideoMobile="/heroVideoSD.mp4"
           >
             <ContenidoFullSlide
               titulo="una entrada estelar"
