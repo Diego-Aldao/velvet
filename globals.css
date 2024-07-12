@@ -15,6 +15,25 @@ body {
   color: var(--main-white);
 }
 
+.deco::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 200%;
+  width: 200%;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 100px #17181d;
+}
+.deco-izquierda::before {
+  right: -56px;
+}
+.deco-bottom::before {
+  top: -40px;
+}
+.deco-bottom-izquierda::before {
+  right: -40px;
+}
+
 h1,
 h2,
 h3,
@@ -38,6 +57,106 @@ img {
   object-fit: cover;
 }
 
+/*SWIPER HERO PAGINA PRINCIPAL*/
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 30px !important;
+  color: #fdfdfd !important;
+  box-shadow: 0 4px 6px -1px transparent;
+  backdrop-filter: blur(4px);
+  width: 44px !important;
+  height: 44px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 1px solid #fdfdfd54;
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.swiper-button-prev {
+  right: 56px !important;
+  left: auto !important;
+}
+.swiper-button-next {
+  right: 0px !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  border: 1px solid #fdfdfdcb;
+  box-shadow: 0 4px 6px -1px #18191a93;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  position: relative;
+  font-size: 14px !important;
+}
+.swiper-button-prev:after {
+  left: -2px !important;
+}
+.swiper-button-next:after {
+  left: 2px !important;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 40px !important;
+    background: #1a1a1ab9;
+  }
+  .swiper-button-next {
+    right: 16px !important;
+  }
+  .swiper-button-prev {
+    right: 76px !important;
+  }
+}
+@media (min-width: 1280px) {
+  .swiper-button-next {
+    right: 32px !important;
+  }
+  .swiper-button-prev {
+    right: 92px !important;
+  }
+}
+
+/*ESTILOS SWIPER PAGINACION HERO MAIN PAGE*/
+.swiper-pagination {
+  width: fit-content !important;
+  left: auto !important;
+  right: 0px !important;
+  align-items: center;
+  gap: 8px;
+  bottom: 0px !important;
+  height: fit-content;
+}
+.swiper-pagination-bullet {
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #e4e6eb !important;
+  width: 40px !important;
+  border-radius: 6px !important;
+  height: 4px !important;
+}
+
+.swiper-pagination-bullet:hover {
+  background: var(--primary) !important;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--primary) !important;
+  position: relative;
+}
+.swiper-pagination-bullet-active:hover {
+  background: var(--primary) !important;
+  opacity: 1;
+}
+
+@media (min-width: 1024px) {
+  .swiper-pagination-bullet {
+    width: 60px !important;
+  }
+}
 /*ESTILOS DROPDOWN NAVEGACION DESKTOP*/
 
 /*listados sin titulos*/
