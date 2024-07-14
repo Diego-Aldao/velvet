@@ -1,26 +1,31 @@
 "use client";
-import { Navigation } from "@/types/fetchTypes";
+import { InitialFetch, Navigation } from "@/types/fetchTypes";
 import React, { useState } from "react";
 import ListadoMainCategorias from "./ListadoMainCategorias/ListadoMainCategorias";
 import { NavButtonClick } from "@/components/buttons/NavButton";
 import HeaderNavMobile from "./HeaderNavMobile";
+import GetGenreNavigation from "@/services/GetGenreNavigation";
+import getCategories from "@/services/getCategories";
 
 interface Props {
-  categorias: Navigation[];
+  data: InitialFetch;
 }
 
-export default function NavMobile({ categorias }: Props) {
+export default function NavMobile({ data }: Props) {
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
 
   const handleClick = () => {
     setMenuVisible((menuVisible) => !menuVisible);
   };
+  const dataGenero = GetGenreNavigation(data);
+  const categorias = getCategories(dataGenero);
 
   return (
     <>
       <NavButtonClick
         handleClick={handleClick}
-        icon="icon-[tabler--menu-deep]"
+        icon="icon-[tabler--menu-deep] md:h-7 md:w-7"
+        customStyles="lg:hidden w-[56px] !justify-start md:w-[100px]"
       />
       <div
         onClick={handleClick}
@@ -43,7 +48,7 @@ export default function NavMobile({ categorias }: Props) {
             menuVisible={menuVisible}
           />
           <div className="listado-categorias h-[500px] overflow-scroll w-full">
-            <ListadoMainCategorias categorias={categorias} />
+            {categorias && <ListadoMainCategorias categorias={categorias} />}
           </div>
         </nav>
       </div>
