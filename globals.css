@@ -285,3 +285,75 @@ img {
 .imageCardsWithDescriptionLarge .light {
   @apply after:from-main-black;
 }
+
+/*ESTILOS CATEGORIAS NAV MOBILE*/
+
+/*Imagebackground*/
+.imageBackground {
+  @apply relative flex items-center;
+  span {
+    @apply absolute left-1 font-bold uppercase max-w-[60%] z-[2];
+  }
+  div {
+    @apply w-full relative after:inset-0 after:absolute after:bg-main-black/10;
+  }
+}
+.imageBackground .dark {
+  @apply text-main-black;
+}
+.imageBackground .noTitle {
+  @apply hidden;
+}
+
+/*circleImageList*/
+
+.circleImageList {
+  @apply flex items-center gap-2 py-1 border-b-secondary last-of-type:border-b-transparent  rounded-md transition-[background-color];
+  div {
+    @apply w-12 h-12 rounded-full border border-secondary;
+  }
+  span {
+    @apply text-xs;
+  }
+}
+.circleImageList:hover {
+  @apply bg-main-black;
+  div {
+    @apply border-primary;
+  }
+  span {
+    @apply text-primary;
+  }
+}
+
+/*circleImageRight*/
+
+.circleImageRight {
+  @apply flex flex-row-reverse bg-main-black p-2 rounded-md overflow-hidden justify-between items-center;
+  div {
+    @apply w-16 h-16 rounded-full border border-transparent;
+  }
+  span {
+    @apply max-w-[60%] font-semibold uppercase;
+  }
+}
+.circleImageRight:hover {
+  @apply bg-primary;
+  div {
+    @apply border-main-black;
+  }
+  span {
+    @apply text-main-black;
+  }
+}
+
+/*aToZBrands*/
+
+.aToZBrands {
+  span {
+    @apply w-full text-center py-2 rounded-md relative max-w-full  block flex-1 line-clamp-1 bg-primary text-base text-main-black font-bold normal-case;
+  }
+  div {
+    @apply hidden;
+  }
+}
