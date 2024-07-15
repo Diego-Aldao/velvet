@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function FetchDataClient<T>(url: string) {
   const [data, setData] = useState<T>();
@@ -8,7 +8,7 @@ export default function FetchDataClient<T>(url: string) {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "d21104e158msh6bb3a0d94b8022dp130dc5jsn0d99ba3f8a12",
+      "x-rapidapi-key": `${process.env.NEXT_PUBLIC_API_KEY}`,
       "x-rapidapi-host": "asos2.p.rapidapi.com",
     },
   };
