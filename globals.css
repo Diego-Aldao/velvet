@@ -357,3 +357,37 @@ img {
     @apply hidden;
   }
 }
+
+/*ESTILOS PARA LA SCROLLBAR*/
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--secondary-black);
+}
+
+ul::-webkit-scrollbar-track {
+  background: var(--main-black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
