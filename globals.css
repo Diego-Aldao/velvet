@@ -4,10 +4,10 @@
 
 :root {
   --main-white: #fdfdfd;
-  --main-black: #0e0e10;
-  --primary: #a5e1cd;
-  --secondary-black: #1a1a1a;
-  --accent: #a1a28e;
+  --main-black: #17181d;
+  --primary: #bdaf60;
+  --secondary-black: #1b1d22;
+  --secondary: #202f38;
 }
 
 body {
