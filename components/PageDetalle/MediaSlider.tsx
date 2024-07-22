@@ -6,6 +6,8 @@ import ReactPlayer from "react-player/lazy";
 import Image from "next/image";
 import { Swiper as SwiperType } from "swiper";
 import { Media } from "@/types/fetchTypes";
+import PlayButton from "../buttons/PlayButton";
+import ContenedorImagen from "../containers/ContenedorImagen";
 
 // Import Swiper styles
 import "swiper/css";
@@ -20,8 +22,8 @@ interface Props {
 export default function MediaSlider({ media }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>();
   return (
-    <div className="contenedor-slider w-full h-full relative">
-      <div className="grid-slider w-full grid gap-4 sm:grid-cols-[1fr,4fr] lg:grid-cols-[1fr,5fr] sm:max-w-full max-w-[450px] lg:w-fit mx-auto lg:mr-0 sticky top-4">
+    <div className="main-contenedor-sliders w-full h-full relative">
+      <div className="contenedor-grid w-full grid gap-4 sm:grid-cols-[1fr,4fr] lg:grid-cols-[1fr,5fr] sm:max-w-full max-w-[450px] lg:w-fit mx-auto lg:mr-0 sticky top-4">
         <div className="main-slider min-w-full sm:col-start-2">
           <Swiper
             spaceBetween={10}
@@ -32,7 +34,7 @@ export default function MediaSlider({ media }: Props) {
           >
             {media.images.map((imagen) => (
               <SwiperSlide key={imagen.url}>
-                <div className="rounded-md overflow-hidden lg:h-[650px] lg:w-[474px] xl:h-[700px] xl:w-[524px]">
+                <ContenedorImagen customStyles="lg:h-[650px] lg:w-[474px] xl:h-[700px] xl:w-[524px]">
                   <Image
                     src={`https://${imagen.url}?$&wid=513&fit=constrain`}
                     alt=""
@@ -49,23 +51,23 @@ export default function MediaSlider({ media }: Props) {
                     sizes="100vw"
                     className="hidden sm:inline-block"
                   />
-                </div>
+                </ContenedorImagen>
               </SwiperSlide>
             ))}
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden w-full h-full">
-                <ReactPlayer
-                  playing={true}
-                  muted={true}
-                  loop={true}
-                  url={
-                    "https://video.asos-media.com/products/vestido-corto-burdeos-con-cuello-ancho-y-detalle-de-lazada-de-punto-de-asos-design/206292845-catwalk-AVS.m3u8"
-                  }
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-            </SwiperSlide>
+            {media.catwalk[0] && (
+              <SwiperSlide>
+                <ContenedorImagen>
+                  <ReactPlayer
+                    playing={true}
+                    muted={true}
+                    loop={true}
+                    url={`https://${media.catwalk[0].url}.m3u8`}
+                    width="100%"
+                    height="100%"
+                  />
+                </ContenedorImagen>
+              </SwiperSlide>
+            )}
           </Swiper>
         </div>
         <div className="thumbnails-slider w-full min-w-full min-h-full sm:h-[500px] sm:col-start-1 sm:row-start-1 md:min-h-fit md:h-[57.5vw] lg:h-[650px] xl:h-[700px]">
@@ -94,7 +96,7 @@ export default function MediaSlider({ media }: Props) {
           >
             {media.images.map((imagen) => (
               <SwiperSlide key={imagen.url}>
-                <div className="rounded-md overflow-hidden w-full h-full">
+                <ContenedorImagen>
                   <Image
                     src={`https://${imagen.url}`}
                     alt=""
@@ -102,23 +104,23 @@ export default function MediaSlider({ media }: Props) {
                     height={0}
                     sizes="100vw"
                   />
-                </div>
+                </ContenedorImagen>
               </SwiperSlide>
             ))}
-            <SwiperSlide>
-              <div className="rounded-md overflow-hidden relative flex items-center justify-center h-full w-full">
-                <span className="absolute bg-secondary-black rounded-full p-2 flex items-center justify-center">
-                  <span className="icon-[tabler--player-play] h-5 w-5"></span>
-                </span>
-                <Image
-                  src={`https://${media.catwalk[0].url}`}
-                  alt=""
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                />
-              </div>
-            </SwiperSlide>
+            {media.catwalk[0] && (
+              <SwiperSlide>
+                <ContenedorImagen customStyles="relative flex items-center justify-center">
+                  <PlayButton />
+                  <Image
+                    src={`https://${media.catwalk[0].url}`}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                  />
+                </ContenedorImagen>
+              </SwiperSlide>
+            )}
           </Swiper>
         </div>
       </div>
