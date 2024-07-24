@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 
 const GetGenreNavigation = (data: InitialFetch) => {
   const pathname = usePathname();
-  if (!data) return;
   if (pathname.includes("/hombre")) {
     return data.navigation[0];
   } else {

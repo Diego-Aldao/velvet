@@ -1,6 +1,6 @@
 import { Navigation } from "@/types/fetchTypes";
 
-const getCategories = (navegacion: Navigation | undefined) => {
+const getCategories = (navegacion: Navigation) => {
   const allCategories = navegacion?.children.filter(
     (item) => item.content.title == "Categories"
   )[0].children;
