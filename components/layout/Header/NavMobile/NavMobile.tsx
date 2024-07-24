@@ -6,6 +6,8 @@ import { NavButtonClick } from "@/components/buttons/NavButton";
 import HeaderNavMobile from "./HeaderNavMobile";
 import GetGenreNavigation from "@/services/GetGenreNavigation";
 import getCategories from "@/services/getCategories";
+import GeneroButton from "@/components/buttons/PageInicio/GeneroButton";
+import { usePathname } from "next/navigation";
 
 interface Props {
   data: InitialFetch;
@@ -13,6 +15,8 @@ interface Props {
 
 export default function NavMobile({ data }: Props) {
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
+  const pathname = usePathname();
+  const pathHombre = pathname.includes("hombre");
 
   const handleClick = () => {
     setMenuVisible((menuVisible) => !menuVisible);
@@ -25,7 +29,7 @@ export default function NavMobile({ data }: Props) {
       <NavButtonClick
         handleClick={handleClick}
         icon="icon-[tabler--menu-deep] md:h-7 md:w-7"
-        customStyles="lg:hidden w-[56px] !justify-start md:w-[100px]"
+        customStyles="lg:hidden w-16 !justify-start md:w-[112px]"
       />
       <div
         onClick={handleClick}
@@ -47,6 +51,20 @@ export default function NavMobile({ data }: Props) {
             handleClick={handleClick}
             menuVisible={menuVisible}
           />
+          <div className="botones-genero flex items-center gap-4 justify-center sm:gap-6">
+            <GeneroButton
+              nombre="mujer"
+              path="/"
+              checked={!pathHombre}
+              customStyles="!py-1 text-xs sm:text-sm"
+            />
+            <GeneroButton
+              nombre="hombre"
+              path="/hombre"
+              checked={pathHombre}
+              customStyles="!py-1 text-xs sm:text-sm"
+            />
+          </div>
           <div className="listado-categorias h-[500px] overflow-scroll w-full">
             {categorias && <ListadoMainCategorias categorias={categorias} />}
           </div>
