@@ -174,30 +174,58 @@ img {
   display: none;
 }
 
+.li-itemListado,
+.li-textList {
+  @apply inline-block py-[2px] pl-1 w-full transition-all bg-gradient-to-r to-transparent via-transparent via-50% from-main-black from-10% bg-size-200 bg-pos-100 hover:bg-pos-0 cursor-pointer;
+}
+.li-itemListado:hover,
+.li-textList:hover {
+  span {
+    @apply text-primary transition-colors;
+  }
+}
+
 /*imagenes Circulares grandes*/
 .gridCircleImageLarge {
-  @apply grid grid-cols-2 gap-8 w-fit;
+  @apply grid grid-cols-2 gap-4 w-full justify-items-center;
 }
 
 .li-gridCircleImageLarge {
-  @apply flex flex-col gap-2 items-center;
-}
-
-.li-gridCircleImageLarge {
-  @apply max-w-[80px] xl:max-w-[96px];
+  @apply w-fit flex flex-col gap-2 items-center p-1 xl:p-2 h-full rounded-md transition-[background-color];
   div {
-    @apply w-20 h-20 overflow-hidden rounded-full border-4 border-secondary xl:w-24 xl:h-24;
+    @apply w-20 h-20 overflow-hidden rounded-full border border-secondary xl:w-24 xl:h-24 transition-[border-color];
   }
   span {
-    @apply text-center;
+    @apply text-center max-w-20 xl:max-w-24 transition-[text-color];
+  }
+}
+
+.li-gridCircleImageLarge:hover {
+  @apply bg-main-black;
+  span {
+    @apply text-primary;
+  }
+  div {
+    @apply border-primary;
   }
 }
 
 /*imagenes Circulares pequeñas*/
 .li-circleImageListLarge {
-  @apply flex items-center gap-2 py-2 border-b border-secondary/50 last:border-transparent;
+  @apply flex items-center gap-2 py-2 px-1 transition-all bg-gradient-to-r to-transparent via-transparent via-50% from-main-black from-10% bg-size-200 bg-pos-100 hover:bg-pos-0 cursor-pointer rounded-md;
   div {
-    @apply w-10 h-10 rounded-full overflow-hidden border-2 border-secondary xl:w-12 xl:h-12;
+    @apply w-10 h-10 rounded-full overflow-hidden border border-secondary xl:w-12 xl:h-12 transition-[border-color];
+  }
+  span {
+    @apply transition-[text-color];
+  }
+}
+.li-circleImageListLarge:hover {
+  span {
+    @apply text-primary;
+  }
+  div {
+    @apply border-primary;
   }
 }
 
@@ -222,13 +250,17 @@ img {
 
 /*imagenes rectangulares horizontales dos*/
 .li-thirdMarketingImage {
-  @apply relative flex items-center;
+  @apply relative flex items-center after:absolute after:inset-0 after:bg-gradient-to-r after:rounded-md min-h-16;
   div {
     @apply w-full;
   }
   span {
-    @apply absolute left-0 uppercase px-4 font-nunito-sans font-bold text-sm xl:text-base;
+    @apply absolute left-0 uppercase px-4 font-nunito-sans font-bold text-sm xl:text-base z-[2];
   }
+}
+
+.li-thirdMarketingImage:hover {
+  @apply after:opacity-100;
 }
 
 /*imagenes rectangulares verticales*/
@@ -243,7 +275,16 @@ img {
 .li-thirdMarketingImage,
 .li-imageCardsWithDescriptionLarge {
   div {
-    @apply rounded-md overflow-hidden border-4 border-secondary;
+    @apply rounded-md overflow-hidden border border-secondary transition-[border-color];
+  }
+}
+
+.li-halfMarketingImage:hover,
+.li-fullMarketingImage:hover,
+.li-thirdMarketingImage:hover,
+.li-imageCardsWithDescriptionLarge:hover {
+  div {
+    @apply border-primary;
   }
 }
 
@@ -259,31 +300,48 @@ img {
 }
 
 /*Images con after dark and light*/
-.halfMarketingImage .dark,
-.fullMarketingImage .dark,
-.halfMarketingImage .light,
-.fullMarketingImage .light,
-.imageCardsWithDescriptionLarge .light,
-.imageCardsWithDescriptionLarge .dark {
-  @apply relative after:absolute after:inset-0 after:bg-gradient-to-t  after:to-55% overflow-hidden rounded-md after:to-transparent;
+.li-halfMarketingImage.dark,
+.li-fullMarketingImage.dark,
+.li-halfMarketingImage.light,
+.li-fullMarketingImage.light,
+.li-imageCardsWithDescriptionLarge.light,
+.li-imageCardsWithDescriptionLarge.dark {
+  @apply relative after:absolute after:inset-0 after:bg-gradient-to-t after:rounded-md after:to-55% overflow-hidden rounded-md after:to-transparent;
   span:first-of-type {
     @apply z-[2];
   }
 }
-.halfMarketingImage .dark,
-.fullMarketingImage .dark,
-.thirdMarketingImage .dark,
-.imageCardsWithDescriptionLarge .dark {
-  @apply after:from-main-white;
+.li-halfMarketingImage.dark,
+.li-fullMarketingImage.dark,
+.li-thirdMarketingImage.dark,
+.li-imageCardsWithDescriptionLarge.dark {
+  @apply after:from-main-white after:transition-all;
   span:first-of-type {
     @apply text-main-black;
   }
 }
-.halfMarketingImage .light,
-.fullMarketingImage .light,
-.thirdMarketingImage .light,
-.imageCardsWithDescriptionLarge .light {
-  @apply after:from-main-black;
+.li-halfMarketingImage:hover.dark,
+.li-fullMarketingImage:hover.dark,
+.li-thirdMarketingImage:hover.dark,
+.li-imageCardsWithDescriptionLarge:hover.dark {
+  @apply after:from-primary;
+}
+
+.li-halfMarketingImage.light,
+.li-fullMarketingImage.light,
+.li-thirdMarketingImage.light,
+.li-imageCardsWithDescriptionLarge.light {
+  @apply after:from-main-black after:rounded-md after:transition-all;
+}
+
+.li-halfMarketingImage:hover.light,
+.li-fullMarketingImage:hover.light,
+.li-thirdMarketingImage:hover.light,
+.li-imageCardsWithDescriptionLarge:hover.light {
+  @apply after:from-primary;
+  span:first-of-type {
+    @apply text-main-black;
+  }
 }
 
 /*ESTILOS CATEGORIAS NAV MOBILE*/
@@ -298,7 +356,7 @@ img {
     @apply w-full relative after:inset-0 after:absolute after:bg-main-black/10;
   }
 }
-.imageBackground .dark {
+.imageBackground.dark {
   @apply text-main-black;
 }
 .imageBackground .noTitle {
