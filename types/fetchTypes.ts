@@ -217,3 +217,142 @@ export type SearchPassMeta = {
   searchPass: any[];
   alternateSearchTerms: any[];
 };
+
+/*FETCH DETALLE PRODUCTO */
+
+export type FetchProductDetail = {
+  id: number;
+  name: string;
+  description: string;
+  localisedData: LocalisedDatum[];
+  gender: string;
+  productCode: string;
+  pdpLayout: string;
+  brand: Brand;
+  sizeGuide: string;
+  isNoSize: boolean;
+  isOneSize: boolean;
+  hasVariantsWithProp65Risk: boolean;
+  variants: Variant[];
+  media: Media;
+  info: Info;
+  badges: any[];
+  associatedGroups: AssociatedGroups;
+  shippingRestriction: null;
+  rating: null;
+  productType: ProductTypeDetail;
+  plpIds: PlpID[];
+  brandType: null;
+  hairType: null;
+  skinType: null;
+  sellingTags: any[];
+  isDiscontinued: boolean;
+  baseUrl: string;
+};
+
+export type AssociatedGroups = {
+  looks: Look[];
+};
+
+export type Look = {
+  id: number;
+  type: string;
+  url: string;
+};
+
+export type Brand = {
+  id: number;
+  name: string;
+  description: string;
+};
+
+export type Info = {
+  aboutMe: string;
+  sizeAndFit: string;
+  careInfo: string;
+};
+
+export type LocalisedDatum = {
+  locale: string;
+  title: string;
+  pdpUrl: string;
+};
+
+export type Media = {
+  images: Image[];
+  catwalk: Catwalk[];
+  spinset: any[];
+  swatchSprite: any[];
+};
+
+export type Catwalk = {
+  assetId: null;
+  url: string;
+  colourWayId: number;
+};
+
+export type Image = {
+  url: string;
+  type: string;
+  colourWayId: number | null;
+  colour: string;
+  isPrimary: boolean;
+};
+
+export type PlpID = {
+  id: number;
+  type: PlpIDType;
+};
+
+export type PlpIDType = "Standard" | "SEO" | "Brand";
+
+export type ProductTypeDetail = {
+  id: number;
+  name: string;
+};
+
+export type Variant = {
+  id: number;
+  name: string;
+  sizeId: number;
+  brandSize: string;
+  displaySizeText: string;
+  sizeOrder: number;
+  sku: string;
+  isAvailable: boolean;
+  colourWayId: number;
+  colour: string;
+  isPrimary: boolean;
+  isProp65Risk: boolean;
+  ean: null;
+};
+
+export type FetchProductDetailFullLook = {
+  id: number;
+  lookTypeId: number;
+  lookTypeName: string;
+  lookImageUrl: string;
+  products: Product[];
+};
+
+export type Product = {
+  id?: number;
+  isHero?: boolean;
+  pdpUrl?: string;
+  name?: string;
+  brandId?: number;
+  brandName?: string;
+  sizeGuideUrl?: string;
+  media?: Media;
+  isNoSize?: boolean;
+  isOneSize?: boolean;
+  hasVariantsWithProp65Risk?: boolean;
+  productCode?: string;
+  productType?: ProductType;
+  variants?: any[];
+};
+
+export type ProductTypeFullLook = {
+  id: number;
+  name: string;
+};

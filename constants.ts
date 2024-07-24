@@ -22,3 +22,4 @@ export const LISTADO_ORDEN_FILTROS_PRODUCTOS: LocalFilters[] = [
 ];
 
 export const BASE_URL_PRODUCTOS = `https://asos2.p.rapidapi.com/products/v2/list?store=ES&lang=es-ES&country=ES&currency=EUR&sizeSchema=ES&`;
+export const BASE_URL_DETALLE_PRODUCTO = `https://asos2.p.rapidapi.com/products/v4/detail?`;
