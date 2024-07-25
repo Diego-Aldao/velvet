@@ -423,3 +423,12 @@ ul::-webkit-scrollbar-thumb {
     @apply !bg-primary !w-1 !rounded-md;
   }
 }
+
+/*DETALLE SUBINFO*/
+
+.sub-info-activo {
+  @apply text-sm;
+  ul {
+    @apply mt-2 list-inside list-disc flex flex-col gap-1;
+  }
+}
