@@ -449,3 +449,44 @@ ul::-webkit-scrollbar-thumb {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
+
+/*SWIPER DETALLE PRODUCTO*/
+.swiper-detalle-producto {
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply bg-main-white/50 !text-main-black !w-8 !h-8 !font-bold;
+  }
+  .swiper-button-next {
+    @apply !right-4;
+  }
+}
+
+@media (min-width: 768px) {
+  .swiper-detalle-producto {
+    .swiper-button-prev {
+      @apply !right-14;
+    }
+  }
+}
+
+.swiper-scrollbar-horizontal {
+  @apply !w-full !h-1 !bg-secondary-black !bottom-0 !absolute !left-0;
+  .swiper-scrollbar-drag {
+    @apply !bg-primary !h-1 !rounded-md;
+  }
+}
+.swiper-scrollbar-vertical {
+  @apply !h-full !w-1 !bg-secondary-black !top-0 !absolute !left-0;
+  .swiper-scrollbar-drag {
+    @apply !bg-primary !w-1 !rounded-md;
+  }
+}
+
+/*DETALLE SUBINFO*/
+
+.sub-info-activo {
+  @apply text-sm;
+  ul {
+    @apply mt-2 list-inside list-disc flex flex-col gap-1;
+  }
+}
