@@ -33,7 +33,7 @@ export function ItemDropdown({
             />
           </div>
         )}
-        <span className="text-sm  font-light text-main-white">
+        <span className="text-xs xl:text-sm font-light text-main-white">
           {content.title}
         </span>
       </Link>
