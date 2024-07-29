@@ -157,6 +157,29 @@ img {
     width: 60px !important;
   }
 }
+
+/*ESTILOS SWIPER PAGINACION HERO TIENDAS*/
+
+.swiper-tienda .swiper-pagination {
+  right: 8px !important;
+}
+
+.swiper-tienda .swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--main-black) !important;
+}
+.swiper-tienda .swiper-pagination-bullet-active {
+  background: var(--primary) !important;
+}
+
+@media (min-width: 1240px) {
+  .swiper-tienda .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
 /*ESTILOS DROPDOWN NAVEGACION DESKTOP*/
 
 /*listados sin titulos*/
