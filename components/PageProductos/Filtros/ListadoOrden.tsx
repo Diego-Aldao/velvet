@@ -1,6 +1,6 @@
 "use client";
 import { LISTADO_ORDEN_FILTROS_PRODUCTOS } from "@/constants";
-import { LocalFilters } from "@/types/localTypes";
+import { LocalFilters, LocalOrden } from "@/types/localTypes";
 import React, { useEffect, useState } from "react";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function ListadoOrden({ setFetchFilters, fetchFilters }: Props) {
-  const [currentListado, setCurrentListado] = useState<LocalFilters[]>(
+  const [currentListado, setCurrentListado] = useState<LocalOrden[]>(
     LISTADO_ORDEN_FILTROS_PRODUCTOS
   );
 
@@ -19,7 +19,7 @@ export default function ListadoOrden({ setFetchFilters, fetchFilters }: Props) {
     setFetchFilters(nuevosFiltros);
   }, [currentListado]);
 
-  const handleClick = (orden: LocalFilters) => {
+  const handleClick = (orden: LocalOrden) => {
     if (orden.isSelected) return;
     const nuevoListado = currentListado.map((itemListado) => {
       if (itemListado.id !== orden.id) {
@@ -31,7 +31,9 @@ export default function ListadoOrden({ setFetchFilters, fetchFilters }: Props) {
 
   return (
     <li className="relative w-full">
-      <span className="text-lg first-letter:uppercase">Ordenar por</span>
+      <span className="text-sm lg:text-base first-letter:uppercase font-medium">
+        Ordenar por
+      </span>
       <ul className="pl-2 flex flex-col gap-2 mt-2 max-h-[400px]">
         {currentListado.map((orden, i) => (
           <li
@@ -42,7 +44,7 @@ export default function ListadoOrden({ setFetchFilters, fetchFilters }: Props) {
             }}
           >
             <span
-              className={`text-sm group-hover:text-primary capitalize ${
+              className={`text-xs lg:text-sm group-hover:text-primary capitalize ${
                 orden.isSelected ? "text-primary" : "text-main-white"
               }`}
             >
