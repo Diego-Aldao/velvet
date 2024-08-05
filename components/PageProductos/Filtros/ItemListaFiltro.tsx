@@ -22,11 +22,11 @@ function ItemLista({ filtro, setFetchFilters, fetchFilters }: Props) {
   if (currentFiltro.filtroVacio) return;
 
   return (
-    <li className="relative w-full">
-      <span className="text-lg">{filtro.name}</span>
+    <li className="relative w-full flex flex-col gap-2">
+      <span className="text-sm lg:text-base font-medium">{filtro.name}</span>
       <ul
-        className={`pl-2 flex flex-col gap-2 mt-2 max-w-[95%] ${
-          currentFiltro.facetValues.length >= 20 &&
+        className={`flex flex-col gap-2 max-w-[95%] lg:max-w-full ${
+          currentFiltro.facetValues.length >= 15 &&
           "max-h-[400px] overflow-y-scroll"
         }`}
       >
@@ -43,7 +43,7 @@ function ItemLista({ filtro, setFetchFilters, fetchFilters }: Props) {
               }}
             >
               <span
-                className={`text-sm group-hover:text-primary ${
+                className={`text-xs lg:text-sm group-hover:text-primary ${
                   filtroValue.isSelected ? "text-primary" : "text-main-white"
                 }`}
               >
