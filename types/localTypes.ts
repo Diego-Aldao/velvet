@@ -1,7 +1,18 @@
 import { Info, Media, Price, Variant } from "./fetchTypes";
 
 export interface LocalFilters {
+  categoryId: string;
+  offset: number;
+  sort: string;
+  limit: number;
   [key: string]: string | number | boolean;
+}
+
+export interface LocalOrden {
+  id: number;
+  nombre: string;
+  value: string;
+  isSelected: boolean;
 }
 
 export interface LocalSubInfo {
