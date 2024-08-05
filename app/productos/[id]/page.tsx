@@ -5,10 +5,10 @@ interface Props {
   params: { id: string };
 }
 
-export default async function Page({ params }: Props) {
+export default function Page({ params }: Props) {
   const { id } = params;
   return (
-    <main className="px-4 md:px-10 lg:px-12 pt-40 lg:pt-56 xl:pt-60">
+    <main className="px-4 md:px-10 lg:px-12 pt-24 md:pt-32 lg:pt-48 xl:pt-52 pb-20">
       <MainContent idCategoria={id} />
     </main>
   );
