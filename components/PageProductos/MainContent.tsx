@@ -67,7 +67,7 @@ export default function MainContent({ idCategoria }: Props) {
               setFetchFilters={setFetchFilters}
             />
             <CantidadDeProductos itemCount={data.itemCount} />
-            <ContainerMainGrid>
+            <ContainerMainGrid customStyles="md:gap-x-1 lg:gap-x-0">
               {currentProductos.length >= 1 && (
                 <>
                   {currentProductos.map((producto) => (
