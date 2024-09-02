@@ -1,6 +1,6 @@
 "use client";
-import { InitialFetch, Navigation } from "@/types/fetchTypes";
-import React, { useState } from "react";
+import { InitialFetch } from "@/types/fetchTypes";
+import React, { useEffect, useState } from "react";
 import ListadoMainCategorias from "./ListadoMainCategorias/ListadoMainCategorias";
 import { NavButtonClick } from "@/components/buttons/NavButton";
 import HeaderNavMobile from "./HeaderNavMobile";
@@ -17,6 +17,14 @@ export default function NavMobile({ data }: Props) {
   const [menuVisible, setMenuVisible] = useState<boolean>(false);
   const pathname = usePathname();
   const pathHombre = pathname.includes("hombre");
+  const [currentPath, setCurrentPath] = useState<string>("");
+
+  useEffect(() => {
+    if (pathname !== currentPath) {
+      setMenuVisible(false);
+    }
+    setCurrentPath(pathname);
+  }, [pathname]);
 
   const handleClick = () => {
     setMenuVisible((menuVisible) => !menuVisible);
@@ -65,7 +73,7 @@ export default function NavMobile({ data }: Props) {
               customStyles="!py-1 text-xs sm:text-sm"
             />
           </div>
-          <div className="listado-categorias h-[500px] overflow-scroll w-full">
+          <div className="listado-categorias h-[500px] overflow-scroll w-full overflow-x-hidden">
             {categorias && <ListadoMainCategorias categorias={categorias} />}
           </div>
         </nav>

@@ -4,10 +4,11 @@
 
 :root {
   --main-white: #fdfdfd;
-  --main-black: #17181d;
-  --primary: #bdaf60;
-  --secondary-black: #1b1d22;
+  --main-black: #131415;
+  --primary: #edc967;
+  --secondary-black: #1b1d21;
   --secondary: #202f38;
+  --main-red: #fb5050;
 }
 
 body {
@@ -445,7 +446,8 @@ img {
   width: 16px;
 }
 
-ul::-webkit-scrollbar {
+ul::-webkit-scrollbar,
+.listado-categorias::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -454,23 +456,24 @@ ul::-webkit-scrollbar {
   background: var(--secondary-black);
 }
 
-ul::-webkit-scrollbar-track {
+ul::-webkit-scrollbar-track,
+.listado-categorias::-webkit-scrollbar-track {
   background: var(--main-black);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary);
+  @apply bg-primary transition-colors;
 }
 
-ul::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 10px;
+ul::-webkit-scrollbar-thumb,
+.listado-categorias::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-lg transition-colors;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  @apply bg-primary/50;
 }
 
 /*SWIPER DETALLE PRODUCTO*/
@@ -511,5 +514,48 @@ ul::-webkit-scrollbar-thumb {
   @apply text-sm;
   ul {
     @apply mt-2 list-inside list-disc flex flex-col gap-1;
+  }
+}
+
+/*LOADER*/
+.loader {
+  width: 60px;
+  height: 20px;
+  display: grid;
+  color: var(--primary);
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  --c: #0000 calc(100% / 3), var(--primary) 0 calc(2 * 100% / 3), #0000 0;
+  --c1: linear-gradient(90deg, var(--c));
+  --c2: linear-gradient(0deg, var(--c));
+  background: var(--c1), var(--c2), var(--c1), var(--c2);
+  background-size: 300% 4px, 4px 300%;
+  background-repeat: no-repeat;
+  animation: l15 1.5s infinite;
+}
+.loader:after {
+  animation-delay: -0.75s;
+}
+@keyframes l15 {
+  0% {
+    background-position: 50% 0, 100% 100%, 0 100%, 0 0;
+  }
+  25% {
+    background-position: 0 0, 100% 50%, 0 100%, 0 0;
+  }
+  50% {
+    background-position: 0 0, 100% 0, 50% 100%, 0 0;
+  }
+  75% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 50%;
+  }
+  75.01% {
+    background-position: 100% 0, 100% 0, 100% 100%, 0 50%;
+  }
+  100% {
+    background-position: 50% 0, 100% 0, 100% 100%, 0 100%;
   }
 }

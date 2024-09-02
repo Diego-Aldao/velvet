@@ -17,7 +17,7 @@ export default function usePriceRange(
 
   useEffect(() => {
     if (precioMinimo === precioMaximo) {
-      setInitialPriceRange([precioMinimo, precioMaximo + 1]);
+      setInitialPriceRange([precioMinimo, precioMaximo + 1]); //para evitar el bug del slider cuando tiene un min-max con el mismo valor
     } else {
       setInitialPriceRange([precioMinimo, precioMaximo]);
     }
@@ -38,7 +38,6 @@ export default function usePriceRange(
       priceMin: precioMinimoString,
       priceMax: precioMaximoString,
     };
-    console.log("updated", nuevosFetchFilters);
     setFetchFilters(nuevosFetchFilters);
   };
 

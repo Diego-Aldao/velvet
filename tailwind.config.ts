@@ -22,10 +22,11 @@ const config: Config = {
       },
       colors: {
         "main-white": "#fdfdfd",
-        "main-black": "#17181d",
+        "main-black": "#131415",
         primary: "#edc967",
         secondary: "#202f38",
-        "secondary-black": "#1b1d22",
+        "secondary-black": "#1b1d21",
+        "main-red": "#fb5050",
       },
       backgroundSize: {
         "size-200": "200% 200%",

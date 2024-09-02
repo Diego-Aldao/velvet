@@ -5,9 +5,14 @@ import { ItemDropdown } from "./ItemDropdown";
 interface Props {
   listadoDropdown: Navigation[];
   visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Dropdown({ listadoDropdown, visible }: Props) {
+export default function Dropdown({
+  listadoDropdown,
+  visible,
+  setVisible,
+}: Props) {
   return (
     <ul
       className={`${
@@ -34,6 +39,7 @@ export default function Dropdown({ listadoDropdown, visible }: Props) {
                 webLargeDisplay={item.display?.webLargeTemplateName}
                 estilo={itemLista.style.webLargeStyleType}
                 categoriaId={itemLista.link?.categoryId}
+                setVisible={setVisible}
               />
             ))}
           </ul>
