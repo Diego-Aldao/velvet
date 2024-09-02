@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown/Dropdown";
 import GetGenreNavigation from "@/services/GetGenreNavigation";
 import getCategories from "@/services/getCategories";
-import ItemNav from "./ItemNavDesktop";
 import ItemNavDesktop from "./ItemNavDesktop";
 import filterByChannelExclusions from "@/utils/filterByChannelExclussions";
 
@@ -51,6 +50,7 @@ export default function NavDesktop({ data }: Props) {
             <Dropdown
               listadoDropdown={currentDropdown}
               visible={dropdownVisible}
+              setVisible={setDropdownVisible}
             />
           )}
         </ul>
