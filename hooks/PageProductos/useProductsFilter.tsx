@@ -25,6 +25,7 @@ export default function useProductsFilter(
       const listadoDeIds = arrayToString(currentFiltro.facetValues);
       setFetchFilters({
         ...fetchFilters,
+        offset: 0,
         [currentFiltro.id]: listadoDeIds,
       });
     } else {
