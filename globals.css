@@ -423,7 +423,8 @@ img {
   width: 16px;
 }
 
-ul::-webkit-scrollbar {
+ul::-webkit-scrollbar,
+.listado-categorias::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -432,7 +433,8 @@ ul::-webkit-scrollbar {
   background: var(--secondary-black);
 }
 
-ul::-webkit-scrollbar-track {
+ul::-webkit-scrollbar-track,
+.listado-categorias::-webkit-scrollbar-track {
   background: var(--main-black);
 }
 
@@ -441,7 +443,8 @@ ul::-webkit-scrollbar-track {
   @apply bg-primary transition-colors;
 }
 
-ul::-webkit-scrollbar-thumb {
+ul::-webkit-scrollbar-thumb,
+.listado-categorias::-webkit-scrollbar-thumb {
   @apply bg-primary rounded-lg transition-colors;
 }
 
