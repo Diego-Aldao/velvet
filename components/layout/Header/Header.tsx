@@ -4,11 +4,10 @@ import fetchData from "@/services/fetchData";
 import NavMobile from "./NavMobile/NavMobile";
 import GeneroSelector from "./GeneroSelector";
 import { InitialFetch } from "@/types/fetchTypes";
-import FavoriteButtonNav from "@/components/buttons/NavButtons/FavoriteButtonNav";
-import CarritoButtonNav from "@/components/buttons/NavButtons/CarritoButtonNav";
 import { IconButtonLink } from "@/components/buttons/IconButton";
 import Logo from "../Logo";
 import { BASE_URL_CATEGORIAS } from "@/constants";
+import UserInteractionButtonNav from "@/components/buttons/NavButtons/UserInteractionButtonNav";
 
 export default async function Header() {
   const data = await fetchData<InitialFetch>(BASE_URL_CATEGORIAS);
@@ -19,14 +18,12 @@ export default async function Header() {
         <GeneroSelector />
         <Logo customStyles="lg:self-center lg:flex-1" />
         <div className="flex items-center justify-end w-fit lg:gap-4 lg:w-[211px] gap-2">
-          <FavoriteButtonNav
-            customIconSize="w-6 h-6 lg:w-7 lg:h-7"
-            customStyles="hidden md:flex"
-          />
-          <CarritoButtonNav customIconSize="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+          <UserInteractionButtonNav nombre="favoritos" />
+          <UserInteractionButtonNav nombre="carrito" />
           <IconButtonLink
             destino="/perfil"
-            customIcon="icon-[tabler--user] w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7"
+            customIcon="icon-[tabler--user] w-6 h-6 lg:w-7 lg:h-7"
+            customStyles="hidden md:flex"
           />
         </div>
       </nav>
