@@ -19,12 +19,14 @@ export default function Loader({
   });
 
   useEffect(() => {
-    if (fetchFilters.offset >= itemCount - 48) return;
-    const nuevosFiltros = {
-      ...fetchFilters,
-      offset: fetchFilters.offset + 48,
-    };
-    setFetchFilters(nuevosFiltros);
+    if (inView) {
+      if (fetchFilters.offset >= itemCount - 48) return;
+      const nuevosFiltros = {
+        ...fetchFilters,
+        offset: fetchFilters.offset + 48,
+      };
+      setFetchFilters(nuevosFiltros);
+    }
   }, [inView]);
 
   return (
