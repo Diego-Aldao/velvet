@@ -1,26 +1,30 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import React from "react";
 
-interface PropsCardDecorated extends Pick<Props, "imagen" | "gridPosition"> {}
+interface PropsCardDecorated
+  extends Pick<Props, "imagen" | "gridPosition" | "destino"> {}
 
 export function SelectionGridCardDecorated({
   imagen,
   gridPosition,
+  destino,
 }: PropsCardDecorated) {
   return (
     <SelectionGridCard
+      destino={destino}
       imagen={imagen}
       tag=""
       tagStyles="hidden"
       gridPosition={gridPosition}
       imagenStyles="my-10 relative max-w-[75%] lg:max-w-[80%]"
     >
-      <span className="absolute uppercase top-1 mr-14 text-main-white/25 font-nunito-sans font-[1000] text-4xl line-clamp-1 w-fit">
+      <span className="absolute uppercase top-1 mr-14 group-hover:mr-24 transition-all text-main-white/25 font-nunito-sans font-[1000] text-4xl line-clamp-1 w-fit">
         plusplusplusplus
         <span className="text-main-white">plus</span>
         plusplusplusplus
       </span>
-      <span className="absolute uppercase bottom-0 ml-14 text-main-white/25 font-nunito-sans font-[1000] text-4xl line-clamp-1 w-fit">
+      <span className="absolute uppercase bottom-0 ml-14 group-hover:ml-24 transition-all text-main-white/25 font-nunito-sans font-[1000] text-4xl line-clamp-1 w-fit">
         sizesizesizesize
         <span className="text-main-white">size</span>
         sizesizesizesize
@@ -30,7 +34,7 @@ export function SelectionGridCardDecorated({
 }
 
 interface PropsCardTitle
-  extends Pick<Props, "imagen" | "tag" | "gridPosition"> {
+  extends Pick<Props, "imagen" | "tag" | "gridPosition" | "destino"> {
   titulo: string;
 }
 export function SelectionGridCardTitle({
@@ -38,9 +42,11 @@ export function SelectionGridCardTitle({
   imagen,
   tag,
   gridPosition,
+  destino,
 }: PropsCardTitle) {
   return (
     <SelectionGridCard
+      destino={destino}
       gridPosition={gridPosition}
       imagen={imagen}
       tag={tag}
@@ -54,7 +60,7 @@ export function SelectionGridCardTitle({
 }
 
 interface PropsCardMiniImage
-  extends Pick<Props, "imagen" | "tag" | "gridPosition"> {
+  extends Pick<Props, "imagen" | "tag" | "gridPosition" | "destino"> {
   miniImage: StaticImageData;
 }
 export function SelectionGridCardMiniImage({
@@ -62,17 +68,24 @@ export function SelectionGridCardMiniImage({
   tag,
   miniImage,
   gridPosition,
+  destino,
 }: PropsCardMiniImage) {
   return (
-    <SelectionGridCard gridPosition={gridPosition} imagen={imagen} tag={tag}>
-      <div className="mini-imagen w-36 h-16 rounded-md overflow-hidden absolute right-2 bottom-12 hidden lg:block">
+    <SelectionGridCard
+      gridPosition={gridPosition}
+      imagen={imagen}
+      tag={tag}
+      destino={destino}
+    >
+      <span className="mini-imagen w-36 h-16 rounded-md overflow-hidden absolute right-2 bottom-12 hidden lg:block">
         <Image src={miniImage} alt="" width={144} height={64} />
-      </div>
+      </span>
     </SelectionGridCard>
   );
 }
 
-interface PropsCardInfo extends Pick<Props, "imagen" | "tag" | "gridPosition"> {
+interface PropsCardInfo
+  extends Pick<Props, "imagen" | "tag" | "gridPosition" | "destino"> {
   infoSM: string;
   infoLG: string;
 }
@@ -82,9 +95,11 @@ export function SelectionGridCardInfo({
   infoSM,
   infoLG,
   gridPosition,
+  destino,
 }: PropsCardInfo) {
   return (
     <SelectionGridCard
+      destino={destino}
       gridPosition={gridPosition}
       imagen={imagen}
       tag={tag}
@@ -107,6 +122,7 @@ interface Props {
   tagStyles?: string;
   imagePosition?: string;
   imagenStyles?: string;
+  destino: string;
 }
 export default function SelectionGridCard({
   imagen,
@@ -116,11 +132,15 @@ export default function SelectionGridCard({
   tagStyles,
   imagePosition,
   imagenStyles,
+  destino,
 }: Props) {
   return (
-    <div className={`relative rounded-md overflow-hidden ${gridPosition}`}>
-      <div
-        className={`image-container rounded-md relative overflow-hidden w-full h-full after:inset-0 after:absolute after:bg-main-black/25 ${imagenStyles}`}
+    <Link
+      href={destino}
+      className={`relative rounded-md overflow-hidden ${gridPosition} border border-transparent hover:border-secondary-black transition-[border-color] group`}
+    >
+      <span
+        className={`image-container block rounded-md relative overflow-hidden w-full h-full after:inset-0 after:absolute after:bg-main-black/25 ${imagenStyles} after:transition-[background-color] group-hover:after:bg-main-black/15`}
       >
         <Image
           src={imagen}
@@ -128,9 +148,9 @@ export default function SelectionGridCard({
           width={0}
           height={0}
           sizes="100vw"
-          className={imagePosition}
+          className={`group-hover:scale-[1.05] transition-transform ${imagePosition}`}
         />
-      </div>
+      </span>
 
       <span
         className={`absolute bottom-2 right-2 text-[10px]  sm:text-xs sm:py-1 sm:px-4 font-semibold uppercase py-[2px] tracking-wide px-2 rounded-full bg-main-black/75 ${tagStyles}`}
@@ -138,6 +158,6 @@ export default function SelectionGridCard({
         {tag}
       </span>
       {children}
-    </div>
+    </Link>
   );
 }

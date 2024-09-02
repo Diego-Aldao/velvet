@@ -24,7 +24,9 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
+    "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/heroicons-outline": "^1.1.10",
+    "@iconify-json/logos": "^1.1.43",
     "@iconify-json/material-symbols": "^1.1.82",
     "@iconify-json/material-symbols-light": "^1.1.22",
     "@iconify-json/tabler": "^1.1.115",
