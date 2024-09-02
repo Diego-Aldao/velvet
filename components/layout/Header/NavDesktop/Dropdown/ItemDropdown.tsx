@@ -8,6 +8,7 @@ interface Props {
   webLargeDisplay: string | undefined;
   estilo: string | null;
   categoriaId: number | undefined | null;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function ItemDropdown({
@@ -15,9 +16,14 @@ export function ItemDropdown({
   webLargeDisplay,
   estilo,
   categoriaId,
+  setVisible,
 }: Props) {
   return (
-    <li>
+    <li
+      onClick={() => {
+        setVisible((visible) => !visible);
+      }}
+    >
       <Link
         href={`/productos/${categoriaId}`}
         className={`li-${webLargeDisplay || "itemListado"} ${estilo} `}
