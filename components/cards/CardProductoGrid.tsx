@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import CardsUserInteraction from "./CardsUserInteraction";
 import Link from "next/link";
 import { Price } from "@/types/fetchTypes";
 import ContenedorImagen from "../containers/ContenedorImagen";
 import PrecioProducto from "../PrecioProducto";
 import { LocalFilters } from "@/types/localTypes";
 import { useInView } from "react-intersection-observer";
+import AddFavoriteButton from "../buttons/AddFavoriteButton";
 
 export function CardProductoGridFull({
   id,
@@ -43,7 +43,7 @@ export function CardProductoGridFull({
       handleHover={handleHover}
     >
       <>
-        <CardsUserInteraction
+        <AddFavoriteButton
           id={id}
           nombre={nombre}
           imagen={imgUrl}
@@ -132,6 +132,7 @@ export function CardProductoGridSimple({
       marca={marca}
       precio={precio}
       color={color}
+      filtersForSimilars={undefined}
     >
       <ContenedorImagen>
         <Image
@@ -162,7 +163,7 @@ interface Props {
   precio: Price;
   color: string;
   children?: React.ReactNode;
-  filtersForSimilars?: LocalFilters;
+  filtersForSimilars: LocalFilters | undefined;
   secondaryImage?: string;
   handleHover?: () => void;
 }
@@ -188,7 +189,12 @@ export default function CardProductoGrid({
       color: color,
     };
     localStorage.setItem("current", JSON.stringify(currentProducto));
-    localStorage.setItem("currentFilters", JSON.stringify(filtersForSimilars));
+    if (filtersForSimilars) {
+      localStorage.setItem(
+        "currentFilters",
+        JSON.stringify(filtersForSimilars)
+      );
+    }
   };
 
   return (
