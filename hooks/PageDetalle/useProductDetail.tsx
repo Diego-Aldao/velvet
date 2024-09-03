@@ -49,7 +49,7 @@ export default function useProductDetail(id: string) {
         imagen: data.media.images[0].url,
         nombre: data.name,
         info: data.info,
-        marca: data.brand.name,
+        marca: data.brand,
         variants: data.variants,
         media: data.media,
         descripcion: data.description,
