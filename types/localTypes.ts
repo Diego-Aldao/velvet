@@ -1,4 +1,4 @@
-import { Info, Media, Price, Variant } from "./fetchTypes";
+import { Brand, Info, Media, Price, Variant } from "./fetchTypes";
 
 export interface LocalFilters {
   categoryId: string;
@@ -24,7 +24,7 @@ export interface LocalProducto {
   id: number;
   nombre: string;
   imagen: string;
-  marca: string;
+  marca: Brand;
   precio?: Price;
   color: string;
   descripcion?: string;

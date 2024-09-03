@@ -13,7 +13,7 @@ export default function useSimilarProducts() {
 
   useEffect(() => {
     const filtersFromLS = localStorage.getItem("currentFilters");
-    if (filtersFromLS !== null && filtersFromLS !== undefined) {
+    if (filtersFromLS) {
       const filtersFromLSParsed: LocalFilters = JSON.parse(filtersFromLS);
       const fetchFilters = objectToFilterString(filtersFromLSParsed);
       setCurrentUrl(`${BASE_URL_PRODUCTOS}${fetchFilters}`);

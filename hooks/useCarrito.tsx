@@ -8,14 +8,16 @@ interface Props {
   id: number;
 }
 
-export default function useFavoritos({ id }: Props) {
-  const { favoritos, updateFavoritos } = useProductContext();
-  const [itemFavorito, setItemFavorito] = useState<boolean>(false);
+export default function useCarrito({ id }: Props) {
+  const { carrito, updateCarrito } = useProductContext();
+  const [itemCarrito, setItemCarrito] = useState<boolean>(false);
 
   useEffect(() => {
-    const itemYaEsFavorito = favoritos.some((favorito) => favorito.id === id);
-    setItemFavorito(itemYaEsFavorito);
-  }, [favoritos]);
+    const itemYaEstaEnCarrito = carrito.some(
+      (itemCarrito) => itemCarrito.id === id
+    );
+    setItemCarrito(itemYaEstaEnCarrito);
+  }, [carrito]);
 
   const handleToast = (nombre: string, color: string, marca: string) => {
     const primerPalabra = nombre.split(" ")[0];
@@ -29,19 +31,18 @@ export default function useFavoritos({ id }: Props) {
       borderColor: "var(--secondary-black)",
     };
 
-    if (itemFavorito) {
-      toast(<CustomToastRemove nombre={nombreToast} tipo="favoritos" />, {
+    if (itemCarrito) {
+      toast(<CustomToastRemove nombre={nombreToast} tipo="carrito" />, {
         style: estiloToast,
       });
     } else {
-      toast(<CustomToastAdd nombre={nombreToast} tipo="favoritos" />, {
+      toast(<CustomToastAdd nombre={nombreToast} tipo="carrito" />, {
         style: estiloToast,
       });
     }
   };
 
-  const handleFavorito = (
-    e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+  const handleItemCarrito = (
     nombre: string,
     precio: string,
     color: string,
@@ -49,10 +50,8 @@ export default function useFavoritos({ id }: Props) {
     tamaño: string,
     marca: string
   ) => {
-    e.preventDefault();
-    e.stopPropagation();
     handleToast(nombre, color, marca);
-    const newFavorito = {
+    const newItemCarrito = {
       nombre: nombre,
       precioFinal: precio,
       color: color,
@@ -60,8 +59,8 @@ export default function useFavoritos({ id }: Props) {
       id: id,
       tamaño: tamaño,
     };
-    updateFavoritos(newFavorito);
+    updateCarrito(newItemCarrito);
   };
 
-  return { handleFavorito, itemFavorito };
+  return { handleItemCarrito, itemCarrito };
 }

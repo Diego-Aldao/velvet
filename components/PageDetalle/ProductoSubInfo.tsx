@@ -56,7 +56,7 @@ export default function ProductoSubInfo({ descripcion, info }: Props) {
         ))}
       </div>
       <div className="sub-info-activo min-h-[150px]">
-        {parse(currentSubInfo.contenido)}
+        {parse(currentSubInfo.contenido.replace(/.*?(<ul>)/, "$1"))}
       </div>
     </div>
   );

@@ -30,6 +30,8 @@ export default function MainContent({ id }: Props) {
               nombre={producto.nombre}
               color={producto.color}
               precio={producto.precio}
+              id={producto.id}
+              imagen={producto.imagen}
             />
             <DetalleUserInteraction
               variantes={producto.variants}
@@ -38,8 +40,8 @@ export default function MainContent({ id }: Props) {
               color={producto.color}
               imagen={producto.imagen}
               id={producto.id}
+              marca={producto.marca.name}
             />
-
             {producto.descripcion && producto.info && (
               <ProductoSubInfo
                 descripcion={producto.descripcion}

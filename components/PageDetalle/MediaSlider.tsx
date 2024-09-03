@@ -23,8 +23,8 @@ export default function MediaSlider({ media }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>();
   return (
     <div className="main-contenedor-sliders w-full h-full relative">
-      <div className="contenedor-grid w-full grid gap-4 sm:grid-cols-[1fr,4fr] lg:grid-cols-[1fr,5fr] sm:max-w-full max-w-[450px] lg:w-fit mx-auto lg:mr-0 sticky top-4">
-        <div className="main-slider min-w-full sm:col-start-2">
+      <div className="contenedor-grid w-full grid gap-4 sm:grid-cols-[1fr,4fr] md:grid-cols-1 lg:grid-cols-[1fr,5fr] sm:max-w-full max-w-[450px] lg:w-fit mx-auto lg:mr-0 sticky top-4">
+        <div className="main-slider min-w-full sm:col-start-2 md:col-start-1 lg:col-start-2">
           <Swiper
             spaceBetween={10}
             navigation={true}
@@ -56,12 +56,12 @@ export default function MediaSlider({ media }: Props) {
             ))}
             {media.catwalk[0] && (
               <SwiperSlide>
-                <ContenedorImagen>
+                <ContenedorImagen customStyles="lg:h-[650px] lg:w-[474px] xl:h-[700px] xl:w-[524px]">
                   <ReactPlayer
                     playing={true}
                     muted={true}
                     loop={true}
-                    url={`https://${media.catwalk[0].url}.m3u8`}
+                    url={`https://${media.catwalk[0].url}`}
                     width="100%"
                     height="100%"
                   />
@@ -70,7 +70,7 @@ export default function MediaSlider({ media }: Props) {
             )}
           </Swiper>
         </div>
-        <div className="thumbnails-slider w-full min-w-full min-h-full sm:h-[500px] sm:col-start-1 sm:row-start-1 md:min-h-fit md:h-[57.5vw] lg:h-[650px] xl:h-[700px]">
+        <div className="thumbnails-slider w-full min-w-full min-h-full sm:h-[500px] sm:col-start-1 sm:row-start-1 md:row-start-2 lg:row-start-1 md:h-[170px] md:min-w-full  lg:h-[650px] xl:h-[700px]">
           <Swiper
             onSwiper={setThumbsSwiper}
             watchSlidesProgress={true}
@@ -79,13 +79,18 @@ export default function MediaSlider({ media }: Props) {
               hide: false,
               draggable: true,
             }}
-            className="h-full !pb-3 sm:!pb-0 sm:!pl-3 lg:!p-0"
+            className="h-full !pb-3 sm:!pb-0 sm:!pl-3 md:!pb-3 md:!p-0"
             slidesPerView={3}
             spaceBetween={10}
             breakpoints={{
               640: {
                 direction: "vertical",
                 spaceBetween: 10,
+              },
+              768: {
+                direction: "horizontal",
+                spaceBetween: 10,
+                slidesPerView: 4,
               },
               1024: {
                 direction: "vertical",
@@ -96,7 +101,7 @@ export default function MediaSlider({ media }: Props) {
           >
             {media.images.map((imagen) => (
               <SwiperSlide key={imagen.url}>
-                <ContenedorImagen>
+                <ContenedorImagen customStyles="cursor-pointer">
                   <Image
                     src={`https://${imagen.url}`}
                     alt=""
@@ -109,16 +114,12 @@ export default function MediaSlider({ media }: Props) {
             ))}
             {media.catwalk[0] && (
               <SwiperSlide>
-                <ContenedorImagen customStyles="relative flex items-center justify-center">
+                <div className="contenedor-video w-full h-full flex flex-col gap-2 items-center justify-center bg-main-white rounded-md cursor-pointer">
                   <PlayButton />
-                  <Image
-                    src={`https://${media.catwalk[0].url}`}
-                    alt=""
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                  />
-                </ContenedorImagen>
+                  <span className="uppercase font-nunito-sans text-sm font-black italic tracking-wide text-main-black">
+                    video
+                  </span>
+                </div>
               </SwiperSlide>
             )}
           </Swiper>

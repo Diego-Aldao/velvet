@@ -5,19 +5,29 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface PropsAdd extends Pick<Props, "nombre"> {}
+interface PropsAdd extends Pick<Props, "nombre"> {
+  tipo: "favoritos" | "carrito";
+}
 
-export function CustomToastRemove({ nombre }: PropsAdd) {
+export function CustomToastRemove({ nombre, tipo }: PropsAdd) {
   return (
-    <CustomToast nombre={`${nombre} quitado de favoritos`}>
+    <CustomToast
+      nombre={`${nombre} ${
+        tipo === "favoritos" ? "quitado de favoritos" : "quitado del carrito"
+      }`}
+    >
       <span className="icon-[tabler--heart-minus] 2xl:h-5 2xl:w-5 text-main-red"></span>
     </CustomToast>
   );
 }
 
-export function CustomToastAdd({ nombre }: PropsAdd) {
+export function CustomToastAdd({ nombre, tipo }: PropsAdd) {
   return (
-    <CustomToast nombre={`${nombre} añadido a favoritos`}>
+    <CustomToast
+      nombre={`${nombre} ${
+        tipo === "favoritos" ? "añadido a favoritos" : "añadido al carrito"
+      }`}
+    >
       <span className="icon-[tabler--heart-plus] 2xl:h-5 2xl:w-5 text-primary"></span>
     </CustomToast>
   );

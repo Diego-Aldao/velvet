@@ -1,24 +1,38 @@
+import AddFavoriteButton from "@/components/buttons/AddFavoriteButton";
 import PrecioProducto from "@/components/PrecioProducto";
-import { Price } from "@/types/fetchTypes";
+import { Brand, Price } from "@/types/fetchTypes";
 import React from "react";
 
 interface Props {
   precio?: Price;
-  marca: string;
+  marca: Brand;
   nombre: string;
   color: string;
+  imagen: string;
+  id: number;
 }
 
-export default function MainInfo({ precio, marca, nombre, color }: Props) {
+export default function MainInfo({
+  precio,
+  marca,
+  nombre,
+  color,
+  id,
+  imagen,
+}: Props) {
   return (
     <div className="flex flex-col gap-4">
-      <header className="top-header flex justify-between items-center">
-        <span className="text-xs font-semibold text-main-white/75">
-          {marca}
-        </span>
-        <button className="bg-secondary-black rounded-full flex items-center p-2">
-          <span className="icon-[tabler--heart-plus] h-5 w-5"></span>
-        </button>
+      <header className="top-header flex justify-between items-center relative">
+        <span className="font-semibold uppercase text-xs">{marca.name}</span>
+        <AddFavoriteButton
+          nombre={nombre}
+          precio={precio?.current.text || "25,99"}
+          color={color}
+          marca={marca.name}
+          id={id}
+          imagen={imagen}
+          customStyles="relative !top-0 !right-0 scale-110"
+        />
       </header>
       <h1 className="sm:text-sm lg:text-xl">{nombre}</h1>
       {precio ? (
