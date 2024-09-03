@@ -10,7 +10,7 @@ export default function ProductoRelacionados() {
   return (
     <>
       {productos && (
-        <section className="w-full md:col-span-2 py-20 flex flex-col gap-8">
+        <section className="w-full md:col-span-2 pt-10 flex flex-col gap-8">
           <header>
             <h2 className="uppercase font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
               puede que también te guste
@@ -26,6 +26,7 @@ export default function ProductoRelacionados() {
                 marca={producto.brandName}
                 precio={producto.price}
                 color={producto.colour}
+                filtersForSimilars={undefined}
               />
             ))}
           </div>
