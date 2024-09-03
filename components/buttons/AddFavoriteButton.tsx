@@ -9,20 +9,24 @@ interface Props {
   imagen: string;
   id: number;
   marca: string;
+  customStyles?: string;
 }
 
-export default function CardsUserInteraction({
+export default function AddFavoriteButton({
   nombre,
   precio,
   color,
   imagen,
   id,
   marca,
+  customStyles,
 }: Props) {
   const { handleFavorito, itemFavorito } = useFavoritos({ id });
 
   return (
-    <span className="interaccion absolute top-2 right-2 lg:top-5 sm:top-4 lg:right-5 sm:right-4 z-10 2xl:top-6 2xl:right-6 ">
+    <span
+      className={`interaccion absolute top-2 right-2 lg:top-5 sm:top-4 lg:right-5 sm:right-4 z-10 2xl:top-6 2xl:right-6 ${customStyles}`}
+    >
       <span
         onClick={(e) => {
           handleFavorito(e, nombre, precio, color, imagen, "S", marca);
