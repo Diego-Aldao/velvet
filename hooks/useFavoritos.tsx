@@ -30,11 +30,11 @@ export default function useFavoritos({ id }: Props) {
     };
 
     if (itemFavorito) {
-      toast(<CustomToastRemove nombre={nombreToast} />, {
+      toast(<CustomToastRemove nombre={nombreToast} tipo="favoritos" />, {
         style: estiloToast,
       });
     } else {
-      toast(<CustomToastAdd nombre={nombreToast} />, {
+      toast(<CustomToastAdd nombre={nombreToast} tipo="favoritos" />, {
         style: estiloToast,
       });
     }
