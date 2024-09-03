@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: "video.asos-media.com",
       },
+      {
+        hostname: "www.asos-video.com",
+      },
     ],
   },
 };
