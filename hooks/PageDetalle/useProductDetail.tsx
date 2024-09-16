@@ -41,6 +41,7 @@ export default function useProductDetail(id: string) {
         info: data.info,
         media: data.media,
         variants: data.variants,
+        marca: data.brand,
       };
       setProducto(newProducto);
     } else {
