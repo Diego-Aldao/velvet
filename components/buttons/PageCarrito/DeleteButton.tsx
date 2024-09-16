@@ -27,7 +27,7 @@ export default function DeleteButton({
   const { handleItemCarrito } = useCarrito({ id });
   return (
     <button
-      className={`${customStyles}`}
+      className={`${customStyles} hover:border-main-red/50 hover:text-main-red transition-colors`}
       onClick={() => {
         handleItemCarrito(nombre, precio, color, imagen, tamaño);
       }}
