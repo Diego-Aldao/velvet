@@ -1,6 +1,7 @@
 "use client";
 import { CustomToastAdd, CustomToastRemove } from "@/components/CustomToast";
 import { useProductContext } from "@/context/ProductsContext";
+import { Current } from "@/types/fetchTypes";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -19,12 +20,16 @@ export default function useCarrito({ id }: Props) {
     setItemCarrito(itemYaEstaEnCarrito);
   }, [carrito]);
 
-  const handleToast = (nombre: string, color: string, marca: string) => {
+  const handleToast = (
+    nombre: string,
+    color: string,
+    marca: string | undefined
+  ) => {
     const primerPalabra = nombre.split(" ")[0];
 
     const nombreToast = `${primerPalabra} ${
       color !== "Sin color" ? color : ""
-    } de ${marca}`;
+    } ${marca ? `de ${marca}` : ""}`;
 
     const estiloToast = {
       background: "var(--secondary-black)",
@@ -44,16 +49,20 @@ export default function useCarrito({ id }: Props) {
 
   const handleItemCarrito = (
     nombre: string,
-    precio: string,
+    precio: Current | undefined,
     color: string,
     imagen: string,
     tamaño: string,
-    marca: string
+    marca?: string
   ) => {
     handleToast(nombre, color, marca);
+    const customPrice = {
+      value: 25,
+      text: "25,00 €",
+    };
     const newItemCarrito = {
       nombre: nombre,
-      precioFinal: precio,
+      precio: precio || customPrice,
       color: color,
       imagen: imagen,
       id: id,
