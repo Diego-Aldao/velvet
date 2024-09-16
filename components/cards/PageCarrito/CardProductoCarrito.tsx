@@ -75,7 +75,15 @@ export default function CardProductoCarrito({
           </span>
         </ul>
         <footer className="mt-auto w-full flex justify-between items-center">
-          <SaveForLaterButton customStyles="hidden sm:flex" />
+          <SaveForLaterButton
+            customStyles="hidden sm:flex"
+            id={id}
+            nombre={nombre}
+            precio={precio}
+            color={color}
+            imagen={imagen}
+            tamaño={tamaño}
+          />
           <span className="font-nunito-sans font-bold sm:text-lg md:text-base lg:text-lg xl:text-xl ml-auto">
             {precio.text}
           </span>
