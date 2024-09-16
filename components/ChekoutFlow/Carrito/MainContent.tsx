@@ -23,7 +23,7 @@ export default function MainContent() {
                 nombre={item.nombre}
                 imagen={item.imagen}
                 color={item.color}
-                precio={item.precioFinal}
+                precio={item.precio}
                 id={item.id}
                 tamaño={item.tamaño}
               />

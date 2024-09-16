@@ -1,5 +1,5 @@
 "use client";
-import { Variant } from "@/types/fetchTypes";
+import { Current, Variant } from "@/types/fetchTypes";
 import React, { useState } from "react";
 import AddCarritoButton from "../buttons/AddCarritoButton";
 import ComprarButton from "../buttons/ComprarButton";
@@ -7,7 +7,7 @@ import ComprarButton from "../buttons/ComprarButton";
 interface Props {
   variantes?: Variant[];
   nombre: string;
-  precioFinal: string;
+  precio: Current | undefined;
   color: string;
   imagen: string;
   id: number;
@@ -17,7 +17,7 @@ interface Props {
 export default function DetalleUserInteraction({
   variantes,
   nombre,
-  precioFinal,
+  precio,
   color,
   imagen,
   id,
@@ -81,7 +81,7 @@ export default function DetalleUserInteraction({
           color={color}
           imagen={imagen}
           marca={marca}
-          precioFinal={precioFinal}
+          precio={precio}
           id={id}
         />
         <AddCarritoButton
@@ -91,7 +91,7 @@ export default function DetalleUserInteraction({
           color={color}
           imagen={imagen}
           marca={marca}
-          precioFinal={precioFinal}
+          precio={precio}
           id={id}
         />
       </div>

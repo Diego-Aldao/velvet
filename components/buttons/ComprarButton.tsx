@@ -1,5 +1,6 @@
 "use client";
 import useCarrito from "@/hooks/useCarrito";
+import { Current } from "@/types/fetchTypes";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -7,7 +8,7 @@ interface Props {
   selectedSize: null | string;
   setNoVariantError: React.Dispatch<React.SetStateAction<boolean>>;
   nombre: string;
-  precioFinal: string;
+  precio: Current | undefined;
   color: string;
   imagen: string;
   id: number;
@@ -21,7 +22,7 @@ export default function ComprarButton({
   color,
   imagen,
   marca,
-  precioFinal,
+  precio,
   id,
 }: Props) {
   const { handleItemCarrito, itemCarrito } = useCarrito({ id });
@@ -32,14 +33,7 @@ export default function ComprarButton({
       setNoVariantError(true);
     } else {
       if (!itemCarrito) {
-        handleItemCarrito(
-          nombre,
-          precioFinal,
-          color,
-          imagen,
-          selectedSize,
-          marca
-        );
+        handleItemCarrito(nombre, precio, color, imagen, selectedSize, marca);
       }
       router.push("/checkout");
     }
