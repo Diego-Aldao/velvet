@@ -4,13 +4,13 @@ import React from "react";
 const listadoBotones = [
   {
     id: 1,
-    nombre: "ir a tus favoritos",
+    nombre: "ir a favoritos",
     destino: "/favoritos",
     icono: "icon-[tabler--heart]",
   },
   {
     id: 2,
-    nombre: "inicio",
+    nombre: "ir al inicio",
     destino: "/",
     icono: "icon-[tabler--home]",
   },
@@ -29,11 +29,13 @@ export default function CarritoVacio() {
         {listadoBotones.map((boton) => (
           <Link
             href={boton.destino}
-            className="border text-[11px] uppercase border-main-white/10 rounded-md bg-main-black py-2 px-4 flex items-center gap-2"
+            className="border text-[11px] uppercase border-main-white/10 rounded-md bg-main-black py-2 px-4 flex items-center gap-2 hover:border-primary/50 hover:text-primary transition-colors w-full max-w-[200px] justify-between"
             key={boton.id}
           >
-            <span className="lg:text-sm">{boton.nombre}</span>
-            <span className={`${boton.icono} lg:h-5 lg:w-5`}></span>
+            <span className="sm:text-xs lg:text-sm">{boton.nombre}</span>
+            <span
+              className={`${boton.icono} h-3 w-3 sm:h-4 lg:h-5 sm:w-4 lg:w-5`}
+            ></span>
           </Link>
         ))}
       </div>
