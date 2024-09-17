@@ -48,7 +48,7 @@ export function CardProductoGridFull({
           nombre={nombre}
           imagen={imgUrl}
           color={color}
-          precio={precio.current.text}
+          precio={precio.current}
           marca={marca}
         />
         <ContenedorImagen customStyles="relative block bg-secondary-black min-h-[56vw] sm:min-h-[37vw] md:min-h-[27vw] lg:min-h-[25vw] xl:min-h-[20vw] 2xl:min-h-[22vw] !h-fit">

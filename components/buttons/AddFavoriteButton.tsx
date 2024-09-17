@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import useFavoritos from "@/hooks/useFavoritos";
+import { Current } from "@/types/fetchTypes";
 
 interface Props {
   nombre: string;
-  precio: string;
+  precio: Current;
   color: string;
   imagen: string;
   id: number;
