@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer/Footer";
 import { ProductProvider } from "@/context/ProductsContext";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "sonner";
+import { Providers } from "@/providers";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -29,16 +30,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="dark">
       <body className={`${raleway.className} ${nunitoSans.variable}`}>
-        <Toaster />
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-          <ProductProvider>
-            <Header />
-            {children}
-            <Footer />
-          </ProductProvider>
-        </SkeletonTheme>
+        <Providers>
+          <Toaster />
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+            <ProductProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ProductProvider>
+          </SkeletonTheme>
+        </Providers>
       </body>
     </html>
   );
