@@ -1,4 +1,4 @@
-import { LocalOrden } from "./types/localTypes";
+import { Envio, LocalOrden } from "./types/localTypes";
 
 export const LISTADO_ORDEN_FILTROS_PRODUCTOS: LocalOrden[] = [
   {
@@ -18,6 +18,27 @@ export const LISTADO_ORDEN_FILTROS_PRODUCTOS: LocalOrden[] = [
     nombre: "precio descendente",
     value: "pricedesc",
     isSelected: false,
+  },
+];
+
+export const ENVIOS: Envio[] = [
+  {
+    tipo: "envio gratis",
+    precio: "0,00",
+    demora: "7-30 dias habiles",
+    id: 1,
+  },
+  {
+    tipo: "envio basico",
+    precio: "5,50",
+    demora: "3-14 dias habiles",
+    id: 2,
+  },
+  {
+    tipo: "envio express",
+    precio: "12,50",
+    demora: "1-3 dias habiles",
+    id: 3,
   },
 ];
 
