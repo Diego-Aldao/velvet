@@ -7,6 +7,7 @@ import Orden from "./Checkout/Orden";
 import MainContentPago from "./Pago/MainContentPago";
 import MainContentConfirmacion from "./Confirmacion/MainContentConfirmacion";
 import Link from "next/link";
+
 interface Props {
   checkoutPage: "carrito" | "checkout" | "pago" | "confirmacion";
 }
@@ -37,16 +38,15 @@ export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
         >
           <Orden
             currentEnvio={currentEnvio}
-            direccionCorrecta={direccionCorrecta}
             customStyles="bg-secondary-black px-3 py-4 border border-main-white/20 rounded-md md:row-start-1 md:col-start-2 md:mt-[14px] md:row-span-full md:sticky sm:top-0"
           >
             <button
               className={`w-full rounded-md py-2 ${
                 direccionCorrecta && currentEnvio !== null
                   ? "bg-primary text-main-black"
-                  : "bg-primary/10 text-secondary-black"
+                  : "bg-primary/10 text-secondary-black cursor-not-allowed"
               }`}
-              disabled={direccionCorrecta !== true && currentEnvio === null}
+              disabled={direccionCorrecta === false || currentEnvio === null}
             >
               <span className="uppercase font-bold">continuar al pago</span>
             </button>
@@ -58,7 +58,6 @@ export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
         <MainContentConfirmacion>
           <Orden
             currentEnvio={currentEnvio}
-            direccionCorrecta={direccionCorrecta}
             pageConfirmacion={pageConfirmacion}
             customStyles=""
           >
