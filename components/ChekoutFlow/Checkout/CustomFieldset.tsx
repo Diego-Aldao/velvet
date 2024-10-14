@@ -4,7 +4,7 @@ interface Props {
   fieldName: string;
   children: React.ReactNode;
   customStyles?: string;
-  fieldsetCompleted?: boolean;
+  fieldsetCompleted: boolean;
 }
 
 export default function CustomFieldset({
