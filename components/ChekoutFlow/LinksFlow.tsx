@@ -23,7 +23,7 @@ const listadoLinksFlow = [
 export default function LinksFlow() {
   const pathname = usePathname();
   return (
-    <nav>
+    <nav className={`${pathname.includes("confirmacion") && "hidden"}`}>
       <ul className="flex gap-2 items-center">
         {listadoLinksFlow.map((link) => (
           <li
