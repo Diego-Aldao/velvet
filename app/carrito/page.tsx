@@ -1,4 +1,4 @@
-import MainContent from "@/components/ChekoutFlow/Carrito/MainContent";
+import MainContentCarrito from "@/components/ChekoutFlow/Carrito/MainContentCarrito";
 import LinksFlow from "@/components/ChekoutFlow/LinksFlow";
 import ContainerChekoutFlow from "@/components/containers/ContainerChekoutFlow";
 
@@ -8,7 +8,7 @@ export default function Carrito() {
   return (
     <ContainerChekoutFlow>
       <LinksFlow />
-      <MainContent />
+      <MainContentCarrito />
     </ContainerChekoutFlow>
   );
 }
