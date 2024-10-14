@@ -36,7 +36,7 @@ export default function Pago() {
         </span>
       </div>
       <Link
-        href="/checkout"
+        href="/cf/checkout"
         className="bg-primary text-main-black text-center uppercase font-bold py-2 rounded-md hover:bg-primary/90 transition-colors"
       >
         ir al checkout
