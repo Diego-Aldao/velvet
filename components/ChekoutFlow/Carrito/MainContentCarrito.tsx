@@ -5,7 +5,7 @@ import Pago from "./Pago";
 import CardProductoCarrito from "@/components/cards/PageCarrito/CardProductoCarrito";
 import CarritoVacio from "./CarritoVacio";
 
-export default function MainContent() {
+export default function MainContentCarrito() {
   const { carrito } = useProductContext();
   return (
     <section
