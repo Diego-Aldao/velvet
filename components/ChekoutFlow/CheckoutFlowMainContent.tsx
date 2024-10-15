@@ -40,16 +40,18 @@ export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
             currentEnvio={currentEnvio}
             customStyles="bg-secondary-black px-3 py-4 border border-main-white/20 rounded-md md:row-start-1 md:col-start-2 md:mt-[14px] md:row-span-full md:sticky sm:top-0"
           >
-            <button
-              className={`w-full rounded-md py-2 ${
+            <Link
+              href={`${
+                direccionCorrecta && currentEnvio !== null ? "/pago" : ""
+              }`}
+              className={`w-full rounded-md py-2 flex items-center justify-center ${
                 direccionCorrecta && currentEnvio !== null
                   ? "bg-primary text-main-black"
                   : "bg-primary/10 text-secondary-black cursor-not-allowed"
               }`}
-              disabled={direccionCorrecta === false || currentEnvio === null}
             >
               <span className="uppercase font-bold">continuar al pago</span>
-            </button>
+            </Link>
           </Orden>
         </MainContentCheckout>
       )}
