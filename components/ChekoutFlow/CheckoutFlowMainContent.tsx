@@ -42,7 +42,7 @@ export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
           >
             <Link
               href={`${
-                direccionCorrecta && currentEnvio !== null ? "/pago" : ""
+                direccionCorrecta && currentEnvio !== null ? "/cf/pago" : ""
               }`}
               className={`w-full rounded-md py-2 flex items-center justify-center ${
                 direccionCorrecta && currentEnvio !== null
