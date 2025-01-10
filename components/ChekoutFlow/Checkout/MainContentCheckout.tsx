@@ -2,7 +2,8 @@ import React from "react";
 import DireccionDeEntrega from "./DireccionDeEntrega";
 import MetodoDeEnvio from "./MetodoDeEnvio";
 import { Envio } from "@/types/localTypes";
-
+import useCheckoutFlow from "@/hooks/checkoutFlow/useCheckoutFlow";
+import CheckoutSkeleton from "@/components/skeletons/CheckoutFlow/CheckoutSkeleton";
 export type Inputs = {
   example: string;
   exampleRequired: string;
@@ -23,19 +24,26 @@ export default function MainContentCheckout({
   setDireccionCorrecta,
   children,
 }: Props) {
+  const { loading } = useCheckoutFlow();
+
   return (
-    <section>
-      <form className="grid gap-8 relative max-w-[400px] mx-auto md:grid-cols-[1.4fr,1fr] sm:max-w-full sm:gap-x-2 lg:gap-8 lg:grid-cols-[1fr,350px] xl:grid-cols-[1fr,450px]">
-        <DireccionDeEntrega
-          direccionCorrecta={direccionCorrecta}
-          setDireccionCorrecta={setDireccionCorrecta}
-        />
-        <MetodoDeEnvio
-          currentEnvio={currentEnvio}
-          setCurrentEnvio={setCurrentEnvio}
-        />
-        {children}
-      </form>
-    </section>
+    <>
+      {loading && <CheckoutSkeleton />}
+      {!loading && (
+        <section className="grid gap-8 relative max-w-[400px] mx-auto md:grid-cols-[1.4fr,1fr] sm:max-w-full w-full sm:gap-x-2 lg:gap-8 lg:grid-cols-[1fr,350px] xl:grid-cols-[1fr,450px]">
+          {!direccionCorrecta && (
+            <DireccionDeEntrega setDireccionCorrecta={setDireccionCorrecta} />
+          )}
+          {direccionCorrecta && (
+            <MetodoDeEnvio
+              currentEnvio={currentEnvio}
+              setCurrentEnvio={setCurrentEnvio}
+              setDireccionCorrecta={setDireccionCorrecta}
+            />
+          )}
+          {children}
+        </section>
+      )}
+    </>
   );
 }
