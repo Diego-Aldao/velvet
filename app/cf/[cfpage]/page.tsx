@@ -6,7 +6,7 @@ import React from "react";
 export default function CheckoutPage({
   params,
 }: {
-  params: { cfpage: "carrito" | "checkout" | "pago" | "confirmacion" };
+  params: { cfpage: "carrito" | "checkout" | "pago" };
 }) {
   return (
     <ContainerChekoutFlow>
