@@ -26,12 +26,18 @@ export default function Pago() {
           <span className="icon-[tabler--currency-euro] h-[14px] w-[14px] xl:h-4 xl:w-4"></span>
         </span>
       </div>
-      <div className="total flex justify-between items-center py-2">
-        <span className="capitalize font-medium">precio final</span>
+      <div className="total flex justify-between items-start py-2">
+        <span className="flex flex-col">
+          <span className="capitalize font-medium">precio final</span>
+          <span className="text-[10px] first-letter:capitalize text-main-white/50">
+            previo al envio*
+          </span>
+        </span>
         <span className="flex gap-1 items-center">
           <span className="text-lg sm:text-xl xl:text-2xl font-nunito-sans font-bold">
             {montoTotal}
           </span>
+
           <span className="icon-[tabler--currency-euro] w-[18px] h-[18px] sm:h-5 sm:w-5"></span>
         </span>
       </div>
