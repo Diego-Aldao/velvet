@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
   customStyles?: string;
   fieldsetCompleted: boolean;
+  fieldsetError: boolean;
 }
 
 export default function CustomFieldset({
@@ -12,12 +13,13 @@ export default function CustomFieldset({
   children,
   customStyles,
   fieldsetCompleted,
+  fieldsetError,
 }: Props) {
   return (
     <fieldset
       className={`w-full border border-main-white/10 rounded-md p-1 pb-4 ${customStyles} overflow-hidden ${
-        fieldsetCompleted ? "border-primary/20" : "border-main-white/10"
-      }`}
+        fieldsetError && !fieldsetCompleted && "border-main-red/20"
+      } ${fieldsetCompleted ? "border-primary/20" : "border-main-white/10"}`}
     >
       <legend className="text-sm py-1 pr-4 pl-2 flex items-center gap-4">
         <span className="first-letter:uppercase">{fieldName}</span>
