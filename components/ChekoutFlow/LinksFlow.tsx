@@ -6,24 +6,21 @@ const listadoLinksFlow = [
   {
     id: 1,
     nombre: "carrito",
-    destino: "/carrito",
   },
   {
     id: 2,
     nombre: "checkout",
-    destino: "/checkout",
   },
   {
     id: 3,
     nombre: "pago",
-    destino: "/pago",
   },
 ];
 
 export default function LinksFlow() {
   const pathname = usePathname();
   return (
-    <nav className={`${pathname.includes("confirmacion") && "hidden"}`}>
+    <nav>
       <ul className="flex gap-2 items-center">
         {listadoLinksFlow.map((link) => (
           <li
@@ -35,7 +32,7 @@ export default function LinksFlow() {
             )}
             <span
               className={`${
-                !pathname.includes(link.destino) && "text-main-white/50"
+                !pathname.includes(link.nombre) && "text-main-white/50"
               }`}
             >
               {link.nombre}
