@@ -1,14 +1,13 @@
 "use client";
 import useCarrito from "@/hooks/useCarrito";
-import { Variant } from "@/types/fetchTypes";
-import { LocalProductInteraction } from "@/types/localTypes";
+import { Current } from "@/types/fetchTypes";
 import React from "react";
 
 interface Props {
   selectedSize: null | string;
   setNoVariantError: React.Dispatch<React.SetStateAction<boolean>>;
   nombre: string;
-  precioFinal: string;
+  precio: Current | undefined;
   color: string;
   imagen: string;
   id: number;
@@ -22,7 +21,7 @@ export default function AddCarritoButton({
   color,
   imagen,
   marca,
-  precioFinal,
+  precio,
   id,
 }: Props) {
   const { handleItemCarrito, itemCarrito } = useCarrito({ id });
@@ -31,14 +30,7 @@ export default function AddCarritoButton({
     if (selectedSize === null) {
       setNoVariantError(true);
     } else {
-      handleItemCarrito(
-        nombre,
-        precioFinal,
-        color,
-        imagen,
-        selectedSize,
-        marca
-      );
+      handleItemCarrito(nombre, precio, color, imagen, selectedSize, marca);
     }
   };
 

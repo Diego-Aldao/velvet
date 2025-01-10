@@ -26,7 +26,7 @@ export default function UserInteractionButtonNav({
         {listado.length}
       </span>
       <IconButtonLink
-        destino={`/${nombre}`}
+        destino={nombre === "carrito" ? `/cf/${nombre}` : `/${nombre}`}
         customIcon={`${
           nombre === "favoritos"
             ? "icon-[tabler--heart]"

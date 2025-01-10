@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { addDynamicIconSelectors } from "@iconify/tailwind";
+import { nextui } from "@nextui-org/theme";
 
 const config: Config = {
   content: [
@@ -7,6 +8,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/components/slider.js",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -37,6 +39,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [addDynamicIconSelectors()],
+  darkMode: "class",
+  plugins: [addDynamicIconSelectors(), nextui()],
 };
 export default config;

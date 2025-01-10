@@ -1,6 +1,7 @@
 "use client";
 import { CustomToastAdd, CustomToastRemove } from "@/components/CustomToast";
 import { useProductContext } from "@/context/ProductsContext";
+import { Current } from "@/types/fetchTypes";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -17,12 +18,16 @@ export default function useFavoritos({ id }: Props) {
     setItemFavorito(itemYaEsFavorito);
   }, [favoritos]);
 
-  const handleToast = (nombre: string, color: string, marca: string) => {
+  const handleToast = (
+    nombre: string,
+    color: string,
+    marca: string | undefined
+  ) => {
     const primerPalabra = nombre.split(" ")[0];
 
     const nombreToast = `${primerPalabra} ${
       color !== "Sin color" ? color : ""
-    } de ${marca}`;
+    } ${marca ? `de ${marca}` : ""}`;
 
     const estiloToast = {
       background: "var(--secondary-black)",
@@ -43,18 +48,22 @@ export default function useFavoritos({ id }: Props) {
   const handleFavorito = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     nombre: string,
-    precio: string,
+    precio: Current,
     color: string,
     imagen: string,
     tamaño: string,
-    marca: string
+    marca?: string
   ) => {
     e.preventDefault();
     e.stopPropagation();
     handleToast(nombre, color, marca);
+    const customPrice = {
+      value: 25,
+      text: "25,00 €",
+    };
     const newFavorito = {
       nombre: nombre,
-      precioFinal: precio,
+      precio: precio || customPrice,
       color: color,
       imagen: imagen,
       id: id,

@@ -36,7 +36,7 @@ export default function MainContent({ id }: Props) {
             <DetalleUserInteraction
               variantes={producto.variants}
               nombre={producto.nombre}
-              precioFinal={producto.precio?.current.text || "25,99 €"}
+              precio={producto.precio?.current}
               color={producto.color}
               imagen={producto.imagen}
               id={producto.id}

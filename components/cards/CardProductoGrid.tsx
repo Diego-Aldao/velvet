@@ -201,7 +201,7 @@ export default function CardProductoGrid({
     <Link
       href={`/detalle/${id}`}
       onClick={handleClick}
-      className="producto rounded-md overflow-hidden flex flex-col gap-2 relative group sm:p-2 lg:p-3 bg-transparent sm:hover:bg-secondary-black transition-colors"
+      className="producto rounded-md overflow-hidden flex flex-col gap-2 relative group sm:p-2 lg:p-3 bg-transparent sm:hover:bg-secondary-black transition-colors border border-transparent hover:border-main-white/10"
       key={id}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
