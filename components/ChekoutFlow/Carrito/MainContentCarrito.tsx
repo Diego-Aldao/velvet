@@ -1,12 +1,18 @@
 "use client";
 import { useProductContext } from "@/context/ProductsContext";
-import React from "react";
+import React, { useEffect } from "react";
 import Pago from "./Pago";
 import CardProductoCarrito from "@/components/cards/PageCarrito/CardProductoCarrito";
 import CarritoVacio from "./CarritoVacio";
 
 export default function MainContentCarrito() {
   const { carrito } = useProductContext();
+  useEffect(() => {
+    if (carrito.length >= 1) {
+      localStorage.setItem("checkoutFlow", JSON.stringify(true));
+    }
+  }, []);
+
   return (
     <section
       className={`max-w-7xl mx-auto w-full ${
