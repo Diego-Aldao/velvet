@@ -5,20 +5,20 @@ import MainContentCheckout from "./Checkout/MainContentCheckout";
 import { Envio } from "@/types/localTypes";
 import Orden from "./Checkout/Orden";
 import MainContentPago from "./Pago/MainContentPago";
-import MainContentConfirmacion from "./Confirmacion/MainContentConfirmacion";
-import Link from "next/link";
 
 interface Props {
-  checkoutPage: "carrito" | "checkout" | "pago" | "confirmacion";
+  checkoutPage: "carrito" | "checkout" | "pago";
 }
 
 export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
   const pageCarrito = checkoutPage === "carrito";
   const pageCheckout = checkoutPage === "checkout";
   const pagePago = checkoutPage === "pago";
-  const pageConfirmacion = checkoutPage === "confirmacion";
 
-  const [currentEnvio, setCurrentEnvio] = useState<Envio | null>(null);
+  const [currentEnvio, setCurrentEnvio] = useState<Envio | null>(() => {
+    const storedEnvio = localStorage.getItem("currentEnvio");
+    return storedEnvio ? JSON.parse(storedEnvio) : null;
+  });
   const [direccionCorrecta, setDireccionCorrecta] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,41 +38,17 @@ export default function CheckoutFlowMainContent({ checkoutPage }: Props) {
         >
           <Orden
             currentEnvio={currentEnvio}
-            customStyles="bg-secondary-black px-3 py-4 border border-main-white/20 rounded-md md:row-start-1 md:col-start-2 md:mt-[14px] md:row-span-full md:sticky sm:top-0"
-          >
-            <Link
-              href={`${
-                direccionCorrecta && currentEnvio !== null ? "/cf/pago" : ""
-              }`}
-              className={`w-full rounded-md py-2 flex items-center justify-center ${
-                direccionCorrecta && currentEnvio !== null
-                  ? "bg-primary text-main-black"
-                  : "bg-primary/10 text-secondary-black cursor-not-allowed"
-              }`}
-            >
-              <span className="uppercase font-bold">continuar al pago</span>
-            </Link>
-          </Orden>
+            customStyles="bg-secondary-black px-3 py-4 border border-main-white/20 rounded-md md:row-start-1 md:col-start-2 md:mt-[14px] md:row-span-full md:sticky sm:top-0 !h-fit"
+          />
         </MainContentCheckout>
       )}
-      {pagePago && <MainContentPago />}
-      {pageConfirmacion && (
-        <MainContentConfirmacion>
+      {pagePago && (
+        <MainContentPago currentEnvio={currentEnvio}>
           <Orden
             currentEnvio={currentEnvio}
-            pageConfirmacion={pageConfirmacion}
-            customStyles=""
-          >
-            <Link
-              href="/"
-              className="w-full rounded-md py-2 bg-primary flex items-center justify-center"
-            >
-              <span className="uppercase text-main-black font-bold">
-                seguir comprando
-              </span>
-            </Link>
-          </Orden>
-        </MainContentConfirmacion>
+            customStyles="bg-secondary-black px-3 py-4 border border-main-white/20 rounded-md md:row-start-1 md:col-start-2 md:mt-[14px] md:row-span-full md:sticky sm:top-0 !h-fit"
+          />
+        </MainContentPago>
       )}
     </>
   );
