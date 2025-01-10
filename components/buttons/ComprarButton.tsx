@@ -35,7 +35,7 @@ export default function ComprarButton({
       if (!itemCarrito) {
         handleItemCarrito(nombre, precio, color, imagen, selectedSize, marca);
       }
-      router.push("/checkout");
+      router.push("/cf/carrito");
     }
   };
   return (
