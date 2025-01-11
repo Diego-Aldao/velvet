@@ -1,5 +1,5 @@
+import MainButton from "@/components/buttons/MainButton";
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
 import React from "react";
 
 interface PropsGridSlideHorizontal
@@ -90,15 +90,11 @@ export default function GridSlideContent({
       <div className="contenedor-button bg-transparent p-0 absolute bottom-2 right-2 sm:bg-main-black sm:bottom-0 sm:right-0 sm:p-3 sm:py-1 sm:rounded-tl-xl lg:px-6 lg:py-2">
         <div className="deco-top deco overflow-hidden deco-bottom absolute bg-transparent -top-10 h-10 w-10 right-0"></div>
         <div className="deco-left deco overflow-hidden deco-bottom absolute bg-transparent bottom-0 h-10 w-10 -left-10"></div>
-        <Link
-          href={destino}
-          className=" flex items-center gap-1 first-letter:uppercase bg-primary sm:bg-transparent border border-transparent sm:border-primary sm:text-primary  py-1 px-2 text-xs text-main-black rounded-full  font-semibold lg:px-4"
-        >
-          <span className="first-letter:uppercase lg:text-sm">
-            {nombreDestino}
-          </span>
-          <span className="icon-[tabler--arrow-narrow-right]"></span>
-        </Link>
+        <MainButton
+          destino={destino}
+          nombreDestino={nombreDestino}
+          customStyles="bg-main-black border-main-black sm:bg-transparent sm:border-main-white lg:text-sm lg:py-[2px]"
+        />
       </div>
     </div>
   );

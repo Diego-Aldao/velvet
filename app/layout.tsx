@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Nunito_Sans } from "next/font/google";
+import { Nunito_Sans, Raleway } from "next/font/google";
 import "@/globals.css";
 import Header from "../components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
+import { ProductProvider } from "@/context/ProductsContext";
+import { SkeletonTheme } from "react-loading-skeleton";
+import { Toaster } from "sonner";
+import { Providers } from "@/providers";
 
-const inter = Inter_Tight({
+const raleway = Raleway({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-raleway",
   style: "normal",
 });
 const nunitoSans = Nunito_Sans({
@@ -26,11 +30,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.className} ${nunitoSans.variable}`}>
-        <Header />
-        {children}
-        <Footer />
+    <html lang="es" className="dark">
+      <body className={`${raleway.className} ${nunitoSans.variable}`}>
+        <Providers>
+          <Toaster />
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+            <ProductProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ProductProvider>
+          </SkeletonTheme>
+        </Providers>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import MainButton from "@/components/buttons/MainButton";
 import React from "react";
 
 interface Props {
@@ -23,17 +23,12 @@ export default function ContenidoFullSlide({
         <span className="text-xs first-letter:uppercase sm:inline-block tracking-wide max-w-[200px] sm:max-w-[300px] lg:text-base lg:max-w-[600px] font-light ">
           {subtitulo}
         </span>
-        <Link
-          href={destino}
-          className="w-fit py-2 px-6 gap-2 items-center bg-transparent border border-primary text-primary rounded-full mt-4 flex backdrop-blur-sm"
-        >
-          <span className="first-letter:uppercase text-xs lg:text-base uppercase font-bold font-nunito-sans">
-            {nombreDestino}
-          </span>
-          <span className="icon-[tabler--arrow-narrow-right]"></span>
-        </Link>
+        <MainButton
+          destino={destino}
+          nombreDestino={nombreDestino}
+          customStyles="w-fit py-2 px-6 backdrop-blur-sm mt-4 gap-2 lg:px-6 md:text-sm lg:text-base"
+        />
       </div>
-
       <div className="rounded-bottom w-full flex justify-center absolute bottom-0 left-0">
         <div className="deco deco-bottom relative overflow-hidden w-10 h-10 bottom-0"></div>
         <div className="black-space flex items-center h-10 bg-main-black rounded-t-xl w-[calc(100%-80px)] justify-center max-w-[300px] relative top-5 lg:max-w-[400px]"></div>
