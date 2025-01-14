@@ -42,3 +42,10 @@ export interface LocalProductInteraction {
   id: number;
   tamaño: string;
 }
+
+export interface Envio {
+  tipo: string;
+  precio: string;
+  id: number;
+  demora: string;
+}
