@@ -13,8 +13,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        raleway: "var(--font-raleway)",
-        "nunito-sans": "var(--font-nunito-sans)",
+        "jakarta-sans": "var(--font-jakarta-sans)",
+        "playfair-display": "var(--font-playfair-display)",
+        ephesis: "var(--font-ephesis)",
       },
       transitionDuration: {
         DEFAULT: "200ms",
@@ -24,10 +25,10 @@ const config: Config = {
       },
       colors: {
         "main-white": "#fdfdfd",
-        "main-black": "#131415",
+        "main-black": "#1a1a1a",
         primary: "#edc967",
-        secondary: "#202f38",
-        "secondary-black": "#1b1d21",
+        secondary: "#1f3735",
+        "secondary-black": "#131415",
         "main-red": "#fb5050",
       },
       backgroundSize: {
