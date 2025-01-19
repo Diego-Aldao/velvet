@@ -1,17 +1,17 @@
 import React from "react";
 import Oferta from "@/components/PageInicio/Oferta";
 import PageInicioMainContainer from "@/components/containers/PaginaInicio/PageInicioMainContainer";
-import MarcasMujeres from "@/components/PageInicio/marcas/MarcasMujeres";
-import SelectionMujer from "@/components/PageInicio/selection/SelectionMujer";
-import HeroMujeres from "@/components/PageInicio/hero/HeroMujeres";
+import HeroHombres from "@/components/PageInicio/hero/HeroHombres";
+import MarcasHombres from "@/components/PageInicio/marcas/MarcasHombres";
+import SelectionHombre from "@/components/PageInicio/selection/SelectionHombre";
 
 export default function PageInicio() {
   return (
     <PageInicioMainContainer>
-      <HeroMujeres />
+      <HeroHombres />
       <Oferta />
-      <MarcasMujeres />
-      <SelectionMujer />
+      <MarcasHombres />
+      <SelectionHombre />
     </PageInicioMainContainer>
   );
 }
