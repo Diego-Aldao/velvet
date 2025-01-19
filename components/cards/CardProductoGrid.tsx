@@ -18,6 +18,7 @@ export function CardProductoGridFull({
   color,
   filtersForSimilars,
   secondaryImage,
+  focusProduct,
 }: Props) {
   const [secondaryImageVisible, setSecondaryImageVisible] =
     useState<boolean>(false);
@@ -41,6 +42,7 @@ export function CardProductoGridFull({
       color={color}
       filtersForSimilars={filtersForSimilars}
       handleHover={handleHover}
+      focusProduct={focusProduct}
     >
       <>
         <AddFavoriteButton
@@ -51,7 +53,7 @@ export function CardProductoGridFull({
           precio={precio.current.text}
           marca={marca}
         />
-        <ContenedorImagen customStyles="relative block bg-secondary-black min-h-[56vw] sm:min-h-[37vw] md:min-h-[27vw] lg:min-h-[25vw] xl:min-h-[20vw] 2xl:min-h-[22vw] !h-fit">
+        <ContenedorImagen customStyles="relative block bg-secondary-black min-h-[56vw] sm:min-h-[37vw] md:min-h-[27vw] lg:min-h-[24vw] xl:min-h-[20vw] 2xl:min-h-[14vw] !h-fit">
           {secondaryImageVisible && secondaryImage && (
             <span
               ref={ref}
@@ -78,8 +80,21 @@ export function CardProductoGridFull({
                 onLoad={() => setImageLoaded(true)}
                 height={0}
                 sizes="100vw"
-                className="hidden sm:inline-block"
+                className={`hidden sm:inline-block ${
+                  focusProduct && "lg:hidden"
+                }`}
               />
+              {focusProduct && (
+                <Image
+                  src={`https://${secondaryImage}?wid=952&fit=constrain`}
+                  alt={nombre}
+                  width={0}
+                  onLoad={() => setImageLoaded(true)}
+                  height={0}
+                  sizes="100vw"
+                  className="hidden lg:inline-block"
+                />
+              )}
             </span>
           )}
 
@@ -97,18 +112,41 @@ export function CardProductoGridFull({
             width={0}
             height={0}
             sizes="100vw"
-            className="hidden sm:inline-block"
+            className={`hidden sm:inline-block ${focusProduct && "lg:hidden"}`}
           />
+          {focusProduct && (
+            <Image
+              src={`https://${imgUrl}?wid=952&fit=constrain`}
+              alt={nombre}
+              width={0}
+              onLoad={() => setImageLoaded(true)}
+              height={0}
+              sizes="100vw"
+              className="hidden lg:inline-block"
+            />
+          )}
         </ContenedorImagen>
         <span className="info flex flex-col gap-1">
-          <span className="uppercase text-[10px] font-medium">{marca}</span>
-          <span className="text-xs line-clamp-2 2xl:text-sm min-h-[32px] 2xl:min-h-[40px]">
+          <span
+            className={`uppercase text-[10px] font-medium ${
+              focusProduct && "lg:text-sm"
+            }`}
+          >
+            {marca}
+          </span>
+          <span
+            className={`text-xs line-clamp-2 min-h-[32px] ${
+              focusProduct && "lg:text-base"
+            }`}
+          >
             {nombre}
           </span>
           <PrecioProducto
             precio={precio}
             isSimple={true}
-            customStyles="relative bottom-0 text-base"
+            customStyles={`relative bottom-0 text-base ${
+              focusProduct && "lg:!text-xl"
+            }`}
           />
         </span>
       </>
@@ -166,6 +204,7 @@ interface Props {
   filtersForSimilars: LocalFilters | undefined;
   secondaryImage?: string;
   handleHover?: () => void;
+  focusProduct?: boolean;
 }
 
 export default function CardProductoGrid({
@@ -177,6 +216,7 @@ export default function CardProductoGrid({
   color,
   children,
   filtersForSimilars,
+  focusProduct,
   handleHover,
 }: Props) {
   const handleClick = () => {
@@ -201,7 +241,9 @@ export default function CardProductoGrid({
     <Link
       href={`/detalle/${id}`}
       onClick={handleClick}
-      className="producto rounded-md overflow-hidden flex flex-col gap-2 relative group sm:p-2 lg:p-3 bg-transparent sm:hover:bg-secondary-black transition-colors border border-transparent hover:border-main-white/10"
+      className={`producto rounded-md overflow-hidden flex flex-col gap-2 relative group sm:p-2 bg-transparent sm:hover:bg-secondary-black transition-colors border border-transparent hover:border-main-white/10 ${
+        focusProduct && "lg:col-span-2 lg:row-span-2"
+      }`}
       key={id}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}

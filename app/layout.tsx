@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Raleway } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Ephesis } from "next/font/google";
 import "@/globals.css";
 import Header from "../components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
@@ -8,15 +8,22 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "sonner";
 import { Providers } from "@/providers";
 
-const raleway = Raleway({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-raleway",
+  variable: "--font-jakarta-sans",
   style: "normal",
 });
-const nunitoSans = Nunito_Sans({
+const ephesis = Ephesis({
+  weight: ["400"],
   subsets: ["latin"],
-  variable: "--font-nunito-sans",
+  variable: "--font-ephesis",
   style: "normal",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
-      <body className={`${raleway.className} ${nunitoSans.variable}`}>
+      <body
+        className={`${playfairDisplay.variable} ${ephesis.variable} ${plusJakartaSans.variable}`}
+      >
         <Providers>
           <Toaster />
           <SkeletonTheme baseColor="#202020" highlightColor="#444">

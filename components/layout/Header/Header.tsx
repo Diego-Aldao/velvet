@@ -8,6 +8,7 @@ import { IconButtonLink } from "@/components/buttons/IconButton";
 import Logo from "../Logo";
 import { BASE_URL_CATEGORIAS } from "@/constants";
 import UserInteractionButtonNav from "@/components/buttons/NavButtons/UserInteractionButtonNav";
+import BarraBusqueda from "@/components/BarraBusqueda";
 
 export default async function Header() {
   const data = await fetchData<InitialFetch>(BASE_URL_CATEGORIAS);
@@ -28,6 +29,7 @@ export default async function Header() {
         </div>
       </nav>
       {data && <NavDesktop data={data} />}
+      <BarraBusqueda customStyles="max-w-[500px] lg:max-w-[600px] xl:max-w-[750px] mx-auto" />
     </header>
   );
 }

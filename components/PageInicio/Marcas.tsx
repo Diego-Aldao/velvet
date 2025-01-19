@@ -1,12 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import imagenTiendaUnoMobile from "@/assets/PageInicioTienda/ImagenTiendaUnoMobile.webp";
-import imagenTiendaUnoDesktop from "@/assets/PageInicioTienda/ImagenTiendaUnoDesktop.webp";
-import imagenTiendaDosMobile from "@/assets/PageInicioTienda/ImagenTiendaDosMobile.webp";
-import imagenTiendaDosDesktop from "@/assets/PageInicioTienda/ImagenTiendaDosDesktop.webp";
-import imagenTiendaTresMobile from "@/assets/PageInicioTienda/ImagenTiendaTresMobile.webp";
-import imagenTiendaTresDesktop from "@/assets/PageInicioTienda/ImagenTiendaTresDesktop.webp";
 import Link from "next/link";
 import { ContainerSectionFullWidthNoHeader } from "../containers/ContainerSection";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,29 +9,13 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { LocalTienda } from "@/types/localTypes";
 
-const listadoTiendas = [
-  {
-    id: 1,
-    destino: "/productos/28477",
-    imgMobile: imagenTiendaUnoMobile,
-    imgDesktop: imagenTiendaUnoDesktop,
-  },
-  {
-    id: 2,
-    destino: "/productos/10597",
-    imgMobile: imagenTiendaDosMobile,
-    imgDesktop: imagenTiendaDosDesktop,
-  },
-  {
-    id: 3,
-    destino: "/productos/8264",
-    imgMobile: imagenTiendaTresMobile,
-    imgDesktop: imagenTiendaTresDesktop,
-  },
-];
+interface Props {
+  marcas: LocalTienda[];
+}
 
-export default function Tienda() {
+export default function Marcas({ marcas }: Props) {
   return (
     <ContainerSectionFullWidthNoHeader>
       <Swiper
@@ -53,11 +31,11 @@ export default function Tienda() {
           delay: 3500,
         }}
       >
-        {listadoTiendas.map((tienda) => (
+        {marcas.map((tienda) => (
           <SwiperSlide key={tienda.id} className="rounded-md overflow-hidden">
             <Link href={tienda.destino} className="rounded-md overflow-hidden">
               <Image
-                src={tienda.imgMobile}
+                src={tienda.imagenMobile}
                 alt=""
                 width={0}
                 height={0}
@@ -65,7 +43,7 @@ export default function Tienda() {
                 className="md:hidden"
               />
               <Image
-                src={tienda.imgDesktop}
+                src={tienda.imagenDesktop}
                 alt=""
                 width={0}
                 height={0}
